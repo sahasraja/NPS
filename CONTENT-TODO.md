@@ -59,9 +59,26 @@ They're publishable as-is if you agree with the opinions in them — read them
 first, because they take positions (e.g. that compliance automation platforms are
 oversold). Put your name on them or attribute them to "NPS" as you prefer.
 
-## 4. Nice to have before launch
+## 4. The logo — send me the vector
 
-- **Replace `og.png`** if you change the tagline (render `assets/img/og.svg`).
+The logo now in the header, footer, favicon and social card came from the PNG you
+sent: **123 × 76 pixels**. That is enough for the header at normal zoom, but it is
+below what a favicon at 512px or a social-share card really needs, and it will look
+soft on a high-DPI screen at larger sizes.
+
+If your designer's original exists — `.ai`, `.eps`, `.svg` or `.pdf` — send it and
+I'll regenerate every logo asset crisply at any size. A PNG at 1000px wide or more
+would also do. Failing that, I can redraw it as clean vector, but that's a redraw,
+not a reproduction.
+
+Also worth deciding: the logo has a **white** element (the three person glyphs) that
+only works on a dark or light background respectively. If you ever need it on white,
+you'll want a second colourway. Ask your designer for a light-background and a
+dark-background version.
+
+## 5. Nice to have before launch
+
+- **Replace `og.png`** if you change the tagline. It is a real image at `assets/img/og.png`.
 - **Real photography** — both reference sites use team photos and office imagery.
   This design deliberately uses none, which keeps it clean, but a single good
   photo of you on the About page would do more for conversion than anything else
@@ -75,7 +92,7 @@ oversold). Put your name on them or attribute them to "NPS" as you prefer.
 - **Legal review** — `privacy.html` and `terms.html` are templates. Have counsel
   read them.
 
-## 5. What I'd do first if it were my site
+## 6. What I'd do first if it were my site
 
 1. Replace the case studies with two real ones. This is the single highest-value edit.
 2. Add a named principal with a photo and a real bio.

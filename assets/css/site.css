@@ -41,11 +41,15 @@
   --text-2:      #A9B8CC;
   --text-3:      #6F8098;
 
-  /* Brand */
-  --accent:      #2DD4BF;
-  --accent-2:    #5AA9FF;
-  --accent-dim:  rgba(45, 212, 191, 0.12);
-  --accent-line: rgba(45, 212, 191, 0.32);
+  /* Brand — derived from the NPS logo (#0088D1 blue / #0BB04A green),
+     brightened for legibility on the dark base. To try the alternatives,
+     swap the four --accent* values for one of the sets below.
+       Green-led:  #2ED573 / #2AA8EE / rgba(46,213,115,.12) / rgba(46,213,115,.32)
+       Teal:       #2DD4BF / #5AA9FF / rgba(45,212,191,.12) / rgba(45,212,191,.32)  */
+  --accent:      #3DB4F2;
+  --accent-2:    #2ED573;
+  --accent-dim:  rgba(61, 180, 242, 0.12);
+  --accent-line: rgba(61, 180, 242, 0.32);
   --warn:        #FBBF24;
 
   /* Type */
@@ -102,7 +106,7 @@ li { margin-bottom: 0.4em; }
 strong { color: #fff; font-weight: 600; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
 
-::selection { background: var(--accent); color: #04121a; }
+::selection { background: var(--accent); color: #04121e; }
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -184,10 +188,10 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
 
 .btn-primary {
   background: var(--accent);
-  color: #04191a;
-  box-shadow: 0 10px 30px -12px rgba(45, 212, 191, 0.7);
+  color: #04121e;
+  box-shadow: 0 10px 30px -12px rgba(61, 180, 242, 0.65);
 }
-.btn-primary:hover { background: #4EE7D3; box-shadow: 0 16px 40px -14px rgba(45, 212, 191, 0.85); }
+.btn-primary:hover { background: #5DC4FA; box-shadow: 0 16px 40px -14px rgba(61, 180, 242, 0.8); }
 
 .btn-ghost {
   background: rgba(255,255,255,0.03);
@@ -230,22 +234,32 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
 .site-header.is-stuck { border-bottom-color: var(--line); background: rgba(6, 9, 15, 0.92); }
 .header-inner { display: flex; align-items: center; gap: 28px; width: 100%; }
 
-.brand { display: flex; align-items: center; gap: 11px; flex: none; }
-.brand-mark { width: 34px; height: 34px; flex: none; }
-.brand-text { display: flex; flex-direction: column; line-height: 1.05; }
-.brand-name {
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 1.12rem;
-  letter-spacing: -0.02em;
-  color: #fff;
+.brand { display: flex; align-items: center; gap: 12px; flex: none; }
+.brand-mark {
+  height: 42px;
+  width: auto;
+  flex: none;
+  /* the logo was drawn for light backgrounds; lift it slightly on dark */
+  filter: saturate(1.06) brightness(1.06);
+}
+.brand-rule {
+  width: 1px;
+  height: 26px;
+  background: var(--line-strong);
+  flex: none;
 }
 .brand-sub {
   font-family: var(--font-mono);
   font-size: 0.575rem;
+  line-height: 1.35;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--text-3);
+  white-space: nowrap;
+}
+.site-footer .brand-mark { height: 54px; }
+@media (max-width: 420px) {
+  .brand-rule, .brand-sub { display: none; }
 }
 
 .nav { margin-left: auto; display: flex; align-items: center; gap: 4px; }
@@ -368,8 +382,8 @@ body.nav-open .nav-toggle .ico-open { display: none; }
   inset: -30% -20% auto -20%;
   height: 780px;
   background:
-    radial-gradient(52% 46% at 22% 22%, rgba(45, 212, 191, 0.16), transparent 68%),
-    radial-gradient(46% 44% at 78% 8%, rgba(90, 169, 255, 0.14), transparent 68%);
+    radial-gradient(52% 46% at 22% 22%, rgba(61, 180, 242, 0.16), transparent 68%),
+    radial-gradient(46% 44% at 78% 8%, rgba(46, 213, 115, 0.13), transparent 68%);
   z-index: -2;
   pointer-events: none;
 }
@@ -417,7 +431,7 @@ body.nav-open .nav-toggle .ico-open { display: none; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   background: var(--accent);
-  color: #04191a;
+  color: #04121e;
   padding: 3px 8px;
   border-radius: 999px;
   font-weight: 700;
@@ -694,8 +708,8 @@ td:first-child { color: var(--text); font-weight: 500; }
   position: absolute;
   inset: -60% -30% auto -30%;
   height: 620px;
-  background: radial-gradient(44% 44% at 30% 30%, rgba(45, 212, 191, 0.13), transparent 70%),
-              radial-gradient(40% 40% at 76% 10%, rgba(90, 169, 255, 0.11), transparent 70%);
+  background: radial-gradient(44% 44% at 30% 30%, rgba(61, 180, 242, 0.13), transparent 70%),
+              radial-gradient(40% 40% at 76% 10%, rgba(46, 213, 115, 0.10), transparent 70%);
   z-index: -1;
   pointer-events: none;
 }
@@ -728,7 +742,7 @@ td:first-child { color: var(--text); font-weight: 500; }
   position: absolute;
   inset: auto -10% -70% 40%;
   height: 400px;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(45, 212, 191, 0.2), transparent 70%);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(61, 180, 242, 0.18), transparent 70%);
   z-index: -1;
 }
 .cta-band h2 { margin-bottom: 14px; }
@@ -876,7 +890,7 @@ td:first-child { color: var(--text); font-weight: 500; }
   position: absolute; left: 16px; top: -60px;
   z-index: 200;
   padding: 10px 18px;
-  background: var(--accent); color: #04191a;
+  background: var(--accent); color: #04121e;
   border-radius: 0 0 10px 10px;
   font-weight: 600;
   transition: top .2s ease;

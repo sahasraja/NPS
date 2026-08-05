@@ -14,6 +14,7 @@ required to deploy, and you can hand-edit the generated files if you prefer.
 
 import html
 import json
+import re
 import os
 import shutil
 
@@ -768,17 +769,11 @@ FAQS = [
 # TEMPLATE PARTS
 # ============================================================================
 
-LOGO_SVG = """<svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-  <defs>
-    <linearGradient id="npsg" x1="4" y1="3" x2="36" y2="37" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#2DD4BF"/><stop offset="1" stop-color="#5AA9FF"/>
-    </linearGradient>
-  </defs>
-  <path d="M20 2.6 5.5 8v12.1C5.5 28.7 12 35 20 37.4 28 35 34.5 28.7 34.5 20.1V8L20 2.6Z"
-        stroke="url(#npsg)" stroke-width="2.1" stroke-linejoin="round"/>
-  <path d="M14.6 26V14.4l10.8 11.1V14" stroke="#E8EFF9" stroke-width="2.4"
-        stroke-linecap="round" stroke-linejoin="round"/>
-</svg>"""
+LOGO_IMG = (
+    '<img class="brand-mark" src="/assets/img/logo.png" '
+    'srcset="/assets/img/logo.png 1x, /assets/img/logo@2x.png 2x, /assets/img/logo@3x.png 3x" '
+    'width="123" height="76" alt="NPS — Nila Pro Services" decoding="async">'
+)
 
 
 def nav_menu():
@@ -799,11 +794,9 @@ def header_html(active):
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="/" aria-label="{SITE['name']} home">
-      {LOGO_SVG}
-      <span class="brand-text">
-        <span class="brand-name">{SITE['name']}</span>
-        <span class="brand-sub">Security Advisory</span>
-      </span>
+      {LOGO_IMG}
+      <span class="brand-rule" aria-hidden="true"></span>
+      <span class="brand-sub">Security<br>Advisory</span>
     </a>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
       {icon('menu')}{icon('close')}
@@ -832,11 +825,9 @@ def footer_html():
     <div class="footer-grid">
       <div>
         <a class="brand" href="/" aria-label="{SITE['name']} home">
-          {LOGO_SVG}
-          <span class="brand-text">
-            <span class="brand-name">{SITE['name']}</span>
-            <span class="brand-sub">Security Advisory</span>
-          </span>
+          {LOGO_IMG}
+          <span class="brand-rule" aria-hidden="true"></span>
+          <span class="brand-sub">Security<br>Advisory</span>
         </a>
         <p style="margin-top:16px">{SITE['legal_name']} — senior cybersecurity advisory,
         compliance and security engineering for organisations that are held to a standard.</p>
@@ -914,6 +905,15 @@ def relativise(doc, depth):
     doc = doc.replace('href="/"', 'href="%sindex.html"' % prefix)
     doc = doc.replace('href="/', 'href="%s' % prefix)
     doc = doc.replace('src="/', 'src="%s' % prefix)
+
+    def _srcset(m):
+        cands = []
+        for c in m.group(1).split(","):
+            c = c.strip()
+            cands.append(prefix + c[1:] if c.startswith("/") else c)
+        return 'srcset="%s"' % ", ".join(cands)
+
+    doc = re.sub(r'srcset="([^"]+)"', _srcset, doc)
     return doc
 
 
@@ -941,7 +941,9 @@ def page(path, title, description, body, active="", schema=None, canonical=None)
 <meta property="og:image" content="{SITE['domain']}/assets/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#06090F">
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/img/icon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-latin-400-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/space-grotesk-latin-600-normal.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
@@ -1925,50 +1927,8 @@ def build_seo_assets():
     with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
         f.write("User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % SITE["domain"])
 
-    # Favicon
-    fav = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <rect width="40" height="40" rx="9" fill="#06090F"/>
-  <path d="M20 5.5 8 10v9.6c0 6.8 5.2 11.8 12 13.8 6.8-2 12-7 12-13.8V10L20 5.5Z"
-        stroke="#2DD4BF" stroke-width="2" fill="none" stroke-linejoin="round"/>
-  <path d="M15.5 25V15.5L24.5 24.5V15" stroke="#E8EFF9" stroke-width="2.6" fill="none"
-        stroke-linecap="round" stroke-linejoin="round"/>
-</svg>"""
-    with open(os.path.join(ROOT, "assets/img/favicon.svg"), "w", encoding="utf-8") as f:
-        f.write(fav)
-
-    # Open Graph card (SVG source; convert to og.png before launch)
-    og = """<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#06090F"/><stop offset="1" stop-color="#0E1626"/>
-    </linearGradient>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#2DD4BF"/><stop offset="1" stop-color="#5AA9FF"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="1030" cy="120" r="260" fill="#2DD4BF" opacity="0.10"/>
-  <circle cx="160" cy="560" r="220" fill="#5AA9FF" opacity="0.09"/>
-  <g transform="translate(84,84)">
-    <path d="M28 4 4 12v20c0 14 11 24 24 28 13-4 24-14 24-28V12L28 4Z" stroke="url(#g)"
-          stroke-width="3.4" fill="none" stroke-linejoin="round"/>
-    <path d="M19 42V22l18 19V21" stroke="#E8EFF9" stroke-width="4" fill="none"
-          stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <text x="160" y="128" fill="#FFFFFF" font-family="Space Grotesk, Inter, sans-serif"
-        font-size="42" font-weight="700">NPS</text>
-  <text x="160" y="158" fill="#6F8098" font-family="JetBrains Mono, monospace"
-        font-size="17" letter-spacing="3">SECURITY ADVISORY</text>
-  <text x="84" y="330" fill="#E8EFF9" font-family="Space Grotesk, Inter, sans-serif"
-        font-size="62" font-weight="600">Security advice from people</text>
-  <text x="84" y="404" fill="#E8EFF9" font-family="Space Grotesk, Inter, sans-serif"
-        font-size="62" font-weight="600">who have run the program.</text>
-  <text x="84" y="482" fill="#A9B8CC" font-family="Inter, sans-serif" font-size="27">
-    vCISO &#183; Risk &amp; Strategy &#183; SOC 2 / ISO 27001 / CMMC &#183; AppSec &#183; AI Governance</text>
-  <rect x="84" y="536" width="184" height="4" rx="2" fill="url(#g)"/>
-</svg>"""
-    with open(os.path.join(ROOT, "assets/img/og.svg"), "w", encoding="utf-8") as f:
-        f.write(og)
+    # Icons and the OG card are real image assets derived from the NPS logo
+    # (see assets/img/). They are checked in, not generated here.
 
     # GitHub Pages needs this so /assets and folder paths are served as-is
     open(os.path.join(ROOT, ".nojekyll"), "w").close()
