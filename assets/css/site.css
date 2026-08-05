@@ -3,21 +3,25 @@
    Design system: "dark technical authority"
    ========================================================================== */
 
-/* ---------- Self-hosted fonts (no third-party requests) ---------- */
-@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap;
-  src: url("../fonts/inter-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap;
-  src: url("../fonts/inter-latin-500-normal.woff2") format("woff2"); }
-@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap;
-  src: url("../fonts/inter-latin-600-normal.woff2") format("woff2"); }
-@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap;
-  src: url("../fonts/inter-latin-700-normal.woff2") format("woff2"); }
-@font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; font-display: swap;
-  src: url("../fonts/space-grotesk-latin-500-normal.woff2") format("woff2"); }
-@font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 600; font-display: swap;
-  src: url("../fonts/space-grotesk-latin-600-normal.woff2") format("woff2"); }
-@font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; font-display: swap;
-  src: url("../fonts/space-grotesk-latin-700-normal.woff2") format("woff2"); }
+/* ---------- Self-hosted fonts (no third-party requests) ----------
+   Manrope — Mikhail Sharanda, SIL Open Font License 1.1
+   Bricolage Grotesque — Mathieu Triay, SIL Open Font License 1.1
+   JetBrains Mono — JetBrains, SIL Open Font License 1.1
+   All three are variable fonts or subsets; latin only. 124 KB total.       */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("../fonts/manrope-latin-wght-normal.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("../fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2-variations");
+}
 @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; font-display: swap;
   src: url("../fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
 @font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; font-display: swap;
@@ -53,8 +57,8 @@
   --warn:        #FBBF24;
 
   /* Type */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-head: "Space Grotesk", var(--font-sans);
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-head: "Bricolage Grotesque", var(--font-sans);
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* Space */
@@ -79,7 +83,7 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   font-size: 16.5px;
-  line-height: 1.65;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -90,8 +94,8 @@ button { font: inherit; color: inherit; }
 h1, h2, h3, h4, h5 {
   font-family: var(--font-head);
   font-weight: 600;
-  line-height: 1.14;
-  letter-spacing: -0.022em;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   margin: 0 0 0.5em;
   text-wrap: balance;
 }

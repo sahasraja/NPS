@@ -108,8 +108,10 @@ Also wire up:
 
 - No cookies, no trackers, no third-party font or script requests. Appropriate
   for a security firm and it removes the need for a cookie banner.
-- Fonts are Inter, Space Grotesk and JetBrains Mono (SIL Open Font License),
-  self-hosted as latin-subset woff2 — 196 KB total.
+- Fonts are Bricolage Grotesque (headings), Manrope (body) and JetBrains Mono
+  (small caps labels) — all SIL Open Font License 1.1, free for commercial use,
+  self-hosted as latin-subset woff2. 124 KB total, no third-party requests.
+  The first two are variable fonts, so one file covers weights 200–800.
 - `og.png` is generated from `assets/img/og.svg`. Re-render it if you change
   the tagline.
 - Accessibility: skip link, visible focus rings, `prefers-reduced-motion`
