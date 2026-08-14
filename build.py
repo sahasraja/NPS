@@ -37,6 +37,13 @@ SITE = {
     "linkedin": "https://www.linkedin.com/company/nila-pro-services/",   # TODO: confirm
     "booking_url": "/contact.html",                                       # TODO: swap for Calendly / Reclaim link
     "form_action": "REPLACE_WITH_FORMSPREE_ENDPOINT",                     # TODO: e.g. https://formspree.io/f/xxxxxx
+
+    # PREVIEW MODE — while the site still contains placeholder content, keep this
+    # True. It adds <meta name="robots" content="noindex,nofollow"> to every page
+    # and a blanket Disallow in robots.txt, so search engines never index the
+    # fabricated case studies. Set to False on the day you launch, and rerun
+    # `python3 build.py`.
+    "preview_mode": True,
 }
 
 # -- PLACEHOLDER CONTENT ------------------------------------------------------
@@ -921,6 +928,10 @@ def page(path, title, description, body, active="", schema=None, canonical=None)
     canon = canonical or (SITE["domain"] + "/" + path.lstrip("/"))
     if canon.endswith("/index.html"):
         canon = canon[: -len("index.html")]
+    robots_meta = ('<meta name="robots" content="noindex,nofollow">\n'
+                   '<!-- PREVIEW MODE: set SITE["preview_mode"] = False before launch -->'
+                   if SITE.get("preview_mode") else
+                   '<meta name="robots" content="index,follow">')
     schema_block = ""
     if schema:
         schema_block = ('<script type="application/ld+json">%s</script>'
@@ -932,6 +943,7 @@ def page(path, title, description, body, active="", schema=None, canonical=None)
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{description}">
+{robots_meta}
 <link rel="canonical" href="{canon}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{SITE['name']} — {SITE['legal_name']}">
@@ -1925,7 +1937,12 @@ def build_seo_assets():
                 + entries + "\n</urlset>\n")
 
     with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
-        f.write("User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % SITE["domain"])
+        if SITE.get("preview_mode"):
+            f.write("# PREVIEW MODE — site is not ready to be indexed.\n"
+                    "# Set SITE[\"preview_mode\"] = False in build.py before launch.\n"
+                    "User-agent: *\nDisallow: /\n")
+        else:
+            f.write("User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n" % SITE["domain"])
 
     # Icons and the OG card are real image assets derived from the NPS logo
     # (see assets/img/). They are checked in, not generated here.

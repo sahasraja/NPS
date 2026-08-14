@@ -1,5 +1,11 @@
 # Before this site goes live
 
+> **The site is currently in preview mode.** `SITE["preview_mode"] = True` in
+> `build.py` adds `noindex,nofollow` to every page and blocks all crawlers in
+> `robots.txt`, so none of the placeholder content below can be indexed under your
+> brand while you review. **Set it to `False` and rerun `python3 build.py` on launch
+> day** — otherwise the finished site stays invisible to Google.
+
 Everything in this file is scaffolding I wrote to demonstrate the structure and
 tone. **None of it is verified fact about NPS.** Publishing it as-is would put
 claims on your site that you can't back up — which is a bad look for any firm and
