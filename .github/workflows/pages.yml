@@ -12,7 +12,11 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # false, not true: with cancel-in-progress a manual re-run of an older run
+  # kills the newer deploy your push just started, and the site silently stays
+  # on the previous build. Queuing them instead means the newest commit always
+  # wins, at the cost of a few extra seconds.
+  cancel-in-progress: false
 
 jobs:
   build:

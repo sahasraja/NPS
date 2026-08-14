@@ -29,13 +29,11 @@ SITE = {
     "legal_name": "Nila Pro Services",
     "domain": "https://nilaproservices.com",
     "tagline": "Security advisory for companies that can't afford to guess.",
-    "phone_display": "(908) 644-0644",
-    "phone_href": "+19086440644",
     "email": "info@nilaproservices.com",
     "address_1": "924 US Highway 9, Suite 311",
     "address_2": "South Amboy, New Jersey 08879",
     "linkedin": "https://www.linkedin.com/company/nila-pro-services/",   # TODO: confirm
-    "booking_url": "/contact.html",                                       # TODO: swap for Calendly / Reclaim link
+    "booking_url": ("https://outlook.office.com/bookwithme/user/0b69000b72af40f3869df745aac995f6@nilaproservices.com/meetingtype/fz1tXex6vUOMyihW7K7jKA2?anonymous&amp;ismsaljsauthenabled&amp;ep=mCardFromTile"),
     "form_action": "REPLACE_WITH_FORMSPREE_ENDPOINT",                     # TODO: e.g. https://formspree.io/f/xxxxxx
 
     # PREVIEW MODE, while the site still contains placeholder content, keep this
@@ -836,7 +834,7 @@ def header_html(active):
       <a class="nav-link{cls('cases')}" href="/case-studies.html">Case Studies</a>
       <a class="nav-link{cls('insights')}" href="/insights.html">Insights</a>
       <a class="nav-link{cls('about')}" href="/about.html">About</a>
-      <a class="btn btn-primary btn-sm header-cta" href="{SITE['booking_url']}">Book a call</a>
+      <a class="btn btn-primary btn-sm header-cta" href="{SITE['booking_url']}" rel="noopener">Book a call</a>
     </nav>
   </div>
 </header>"""
@@ -879,8 +877,8 @@ def footer_html():
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a></li>
           <li><a href="mailto:{SITE['email']}">{SITE['email']}</a></li>
+          <li><a href="{SITE['booking_url']}" rel="noopener">Book a call</a></li>
           <li style="color:var(--text-3)">{SITE['address_1']}<br>{SITE['address_2']}</li>
         </ul>
       </div>
@@ -1087,7 +1085,6 @@ def build_home():
   <div class="wrap">
     <div class="hero-sub">
       <div>
-        <span class="pill"><b>NPS</b> Nila Pro Services · Security Advisory</span>
         <h1>Security advice from people who have actually run the program.</h1>
         <p class="lede">We are a senior cybersecurity advisory practice. We assess real risk, build
         the controls, run the certification and stay through the audit, so security stops being
@@ -1273,7 +1270,6 @@ def build_home():
         "alternateName": SITE["name"],
         "url": SITE["domain"],
         "description": "Senior cybersecurity advisory, compliance and security engineering.",
-        "telephone": SITE["phone_display"],
         "email": SITE["email"],
         "address": {
             "@type": "PostalAddress",
@@ -1856,8 +1852,8 @@ def build_contact():
         <div class="card" style="padding:30px">
           <h3 style="margin-bottom:22px">Reach us directly</h3>
           <div class="info-list">
-            <div class="info-item"><span class="ico">{icon('phone')}</span>
-              <div><b>Phone</b><a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a></div></div>
+            <div class="info-item"><span class="ico">{icon('clock')}</span>
+              <div><b>Book directly</b><a href="{SITE['booking_url']}" rel="noopener">30 minutes with Raj Kumar</a></div></div>
             <div class="info-item"><span class="ico">{icon('mail')}</span>
               <div><b>Email</b><a href="mailto:{SITE['email']}">{SITE['email']}</a></div></div>
             <div class="info-item"><span class="ico">{icon('pin')}</span>
@@ -1870,11 +1866,13 @@ def build_contact():
         <div class="card" style="padding:30px;margin-top:22px;border-color:var(--accent-line)">
           <div class="card-ico">{icon('radar')}</div>
           <h3>Active incident?</h3>
-          <p>If you are dealing with a live security incident, call rather than email. Say
-          &ldquo;incident&rdquo; and you will be routed to a senior practitioner.</p>
+          <p>If you are dealing with a live security incident, email us with
+          <strong>INCIDENT</strong> in the subject line. Those go straight to a senior
+          practitioner rather than into the normal queue.</p>
           <div class="card-foot">
-            <a class="btn btn-primary btn-block" href="tel:{SITE['phone_href']}">
-              Call {SITE['phone_display']}</a>
+            <a class="btn btn-primary btn-block"
+               href="mailto:{SITE['email']}?subject=INCIDENT%20-%20urgent%20security%20support">
+              Email the incident line</a>
           </div>
         </div>
       </aside>
@@ -1919,8 +1917,7 @@ def build_legal():
   applicable non-disclosure terms, which take precedence over this policy.</p>
   <h2>Contact</h2>
   <p>{SITE['legal_name']}, {SITE['address_1']}, {SITE['address_2']}.
-  <a href="mailto:{SITE['email']}">{SITE['email']}</a> ·
-  <a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a></p>
+  <a href="mailto:{SITE['email']}">{SITE['email']}</a></p>
 </article></div></section>
 """
     page("privacy.html", "Privacy Policy | NPS", "How Nila Pro Services handles personal information.",

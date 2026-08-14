@@ -76,7 +76,7 @@
         var note = form.querySelector('.form-status');
         if (note) {
           note.textContent =
-            'Form endpoint not configured yet. Email info@nilaproservices.com or call (908) 644-0644 in the meantime.';
+            'Form endpoint not configured yet. Email info@nilaproservices.com in the meantime.';
           note.style.color = 'var(--warn)';
         }
       }

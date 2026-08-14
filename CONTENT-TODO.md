@@ -34,12 +34,14 @@ All in the `SITE` dict at the top of `build.py`:
   endpoint from [Formspree](https://formspree.io) or [Basin](https://usebasin.com),
   or deploy on Netlify/Cloudflare Pages and use their built-in form handling.
   Until this is set, the form shows a fallback message rather than failing silently.
-- `booking_url`, currently points to `/contact.html`. Both reference sites use a
-  real scheduler (Reclaim.ai and a calendar link). Calendly or Cal.com works.
-  Every "Book a call" button on the site reads from this one value.
+- `booking_url`, **done.** Points at your Outlook Bookings page (30 minutes with
+  Raj Kumar). Every "Book a call" button on the site reads from this one value.
 - `linkedin`, I guessed the company page URL. Confirm it.
-- `phone_display` / `phone_href` / `email` / address, carried from your current
-  site. Confirm they're still right.
+- **Phone number removed** from the whole site at your request (the old one was
+  wrong). If you want one back, add `phone_display` and `phone_href` to `SITE` and
+  tell me, and I'll restore the footer row, the contact card and the schema entry.
+- `email` and the office address are carried from your current site. Confirm they're
+  still right.
 
 ## 3. Content decisions that need you
 
