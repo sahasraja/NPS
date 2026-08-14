@@ -1,4 +1,4 @@
-/* NPS — site interactions. No dependencies. */
+/* NPS, site interactions. No dependencies. */
 (function () {
   'use strict';
 
@@ -66,7 +66,7 @@
     setTimeout(function () { el.style.width = w; }, 220);
   });
 
-  /* Contact form — graceful handling when no endpoint is wired yet */
+  /* Contact form, graceful handling when no endpoint is wired yet */
   var form = document.querySelector('form[data-contact]');
   if (form) {
     form.addEventListener('submit', function (e) {

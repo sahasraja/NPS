@@ -31,7 +31,7 @@ jobs:
       - name: Fail if generated HTML differs from what was committed
         run: |
           if ! git diff --quiet; then
-            echo "::warning::Committed HTML is out of date with build.py — deploying the freshly generated output."
+            echo "::warning::Committed HTML is out of date with build.py, deploying the freshly generated output."
             git diff --stat
           fi
 

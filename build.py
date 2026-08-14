@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-NPS (Nila Pro Services) — static site generator.
+NPS (Nila Pro Services), static site generator.
 
 Plain Python, no dependencies. Run `python3 build.py` to regenerate every
 .html file in the repo root from the content defined below.
@@ -8,7 +8,7 @@ Plain Python, no dependencies. Run `python3 build.py` to regenerate every
 Why a generator instead of 22 hand-edited HTML files?
   - The header, nav, footer and CTA band stay identical everywhere.
   - Adding a service = one dict entry, not one new file + 21 nav edits.
-The *output* is still 100% plain static HTML/CSS/JS — no build step is
+The *output* is still 100% plain static HTML/CSS/JS, no build step is
 required to deploy, and you can hand-edit the generated files if you prefer.
 """
 
@@ -21,7 +21,7 @@ import shutil
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # ============================================================================
-# SITE CONFIG  —  edit this block first
+# SITE CONFIG ,  edit this block first
 # ============================================================================
 
 SITE = {
@@ -38,7 +38,7 @@ SITE = {
     "booking_url": "/contact.html",                                       # TODO: swap for Calendly / Reclaim link
     "form_action": "REPLACE_WITH_FORMSPREE_ENDPOINT",                     # TODO: e.g. https://formspree.io/f/xxxxxx
 
-    # PREVIEW MODE — while the site still contains placeholder content, keep this
+    # PREVIEW MODE, while the site still contains placeholder content, keep this
     # True. It adds <meta name="robots" content="noindex,nofollow"> to every page
     # and a blanket Disallow in robots.txt, so search engines never index the
     # fabricated case studies. Set to False on the day you launch, and rerun
@@ -54,7 +54,7 @@ METRICS = [  # TODO: replace with verified figures
     ("20<em>+</em>", "Years leading security programs across regulated industries"),
     ("60<em>+</em>", "Audits, assessments and certifications guided to completion"),
     ("9", "Compliance frameworks operated end to end, not just advised on"),
-    ("100<em>%</em>", "Engagements led by a senior practitioner — never handed to juniors"),
+    ("100<em>%</em>", "Engagements led by a senior practitioner, never handed to juniors"),
 ]
 
 CLIENT_LOGOS = ["Infosys", "HCL", "GalaxE", "Cybersecon", "HiQuest"]  # TODO: confirm permission to name
@@ -62,7 +62,7 @@ CLIENT_LOGOS = ["Infosys", "HCL", "GalaxE", "Cybersecon", "HiQuest"]  # TODO: co
 TESTIMONIALS = [  # TODO: replace with real, attributable quotes (get written approval)
     (
         "They walked in during our worst week and made the next twelve months legible. "
-        "No theater, no forty-slide deck — a ranked list of what actually mattered and who owned it.",
+        "No theater, no forty-slide deck, a ranked list of what actually mattered and who owned it.",
         "VP of Engineering", "Healthcare SaaS platform",
     ),
     (
@@ -136,8 +136,8 @@ SERVICES = [
         "title": "Virtual &amp; Fractional CISO",
         "short": "Embedded security leadership",
         "menu_desc": "Senior security ownership without a full-time hire.",
-        "summary": "A named senior security leader who owns your program — strategy, roadmap, "
-                   "budget, board reporting and vendor management — at the fraction of a "
+        "summary": "A named senior security leader who owns your program: strategy, roadmap, "
+                   "budget, board reporting and vendor management, all at the fraction of a "
                    "full-time hire that your stage actually needs.",
         "problem_head": "You need a CISO's judgment, not a CISO's salary",
         "problem": [
@@ -150,7 +150,7 @@ SERVICES = [
         "does": [
             "Own the security program end to end with a named, accountable senior leader",
             "Build and maintain a 12–18 month roadmap tied to business milestones, not tool releases",
-            "Run the security governance cadence — risk register, exceptions, metrics, steering reviews",
+            "Run the security governance cadence: risk register, exceptions, metrics, steering reviews",
             "Present risk to the board, investors, insurers and enterprise customers in their language",
             "Set security budget and defend it with a defensible cost-of-risk argument",
             "Manage security vendors, MSSPs and pen test partners so they earn their invoice",
@@ -159,14 +159,14 @@ SERVICES = [
         ],
         "deliverables": [
             ("Security program charter", "Scope, authority, RACI and decision rights, agreed with your executive team"),
-            ("Risk register + treatment plan", "Ranked, owned, dated — with the accepted risks written down on purpose"),
+            ("Risk register + treatment plan", "Ranked, owned, dated, with the accepted risks written down on purpose"),
             ("12–18 month roadmap", "Sequenced by risk reduction per dollar, mapped to your funding cycle"),
             ("Board / customer reporting pack", "A repeatable deck and metric set you can run without us"),
             ("Policy and standards set", "Written to be followed, mapped to the frameworks you are held to"),
             ("Quarterly program review", "What moved, what didn't, what changes next quarter and why"),
         ],
         "engagements": [
-            ("Fractional CISO", "Ongoing", "A recurring commitment — typically 2–6 days a month — with standing exec presence."),
+            ("Fractional CISO", "Ongoing", "A recurring commitment, typically 2 to 6 days a month, with standing exec presence."),
             ("Interim CISO", "3–12 months", "Full-time coverage through a departure, a crisis or a funding event."),
             ("CISO advisory", "Retainer", "Your internal leader keeps the title; we're the bench they call."),
         ],
@@ -176,7 +176,7 @@ SERVICES = [
         "icon": "compass",
         "title": "Cyber Risk &amp; Security Strategy",
         "short": "Know what actually matters",
-        "menu_desc": "Assess, prioritise and sequence — in business terms.",
+        "menu_desc": "Assess, prioritise and sequence, in business terms.",
         "summary": "An honest read of where you stand, what could actually hurt you, and the "
                    "shortest sequence of work that reduces the most risk. Written for executives, "
                    "detailed enough for engineers.",
@@ -199,7 +199,7 @@ SERVICES = [
         "deliverables": [
             ("Current-state assessment", "Capability maturity by domain, with the evidence behind every score"),
             ("Scenario risk analysis", "The 5–8 events that matter, with likelihood, impact and current coverage"),
-            ("Ranked risk register", "One list, one owner per item, one date — no parallel spreadsheets"),
+            ("Ranked risk register", "One list, one owner per item, one date, no parallel spreadsheets"),
             ("Costed roadmap", "Phased 12–36 months with dependencies, effort and expected risk reduction"),
             ("Executive briefing", "A 20-minute version your CEO and board can act on"),
             ("Metrics baseline", "The starting numbers you will be measured against next quarter"),
@@ -216,17 +216,17 @@ SERVICES = [
         "title": "Compliance &amp; Audit Readiness",
         "short": "SOC 2, ISO 27001, HIPAA, CMMC",
         "menu_desc": "Certification and audit programs run end to end.",
-        "summary": "We run the certification, not just advise on it — scoping, control design, "
+        "summary": "We run the certification, not just advise on it: scoping, control design, "
                    "evidence, auditor management and the operating rhythm that keeps you compliant "
                    "in year two without another fire drill.",
         "problem_head": "Compliance is blocking revenue, and the deadline is real",
         "problem": [
             "A customer contract or an investor is gating on SOC 2, ISO 27001 or HIPAA attestation.",
             "You bought a compliance automation platform and discovered it doesn't do the work for you.",
-            "Last year's audit was survived, not run — and nobody wants to repeat it.",
+            "Last year's audit was survived, not run, and nobody wants to repeat it.",
         ],
         "does": [
-            "Scope the audit honestly — the right systems, the right boundary, the right trust criteria",
+            "Scope the audit honestly: the right systems, the right boundary, the right trust criteria",
             "Perform gap analysis against the target framework with a remediation plan you can staff",
             "Design controls that fit how your team actually works, so they survive year two",
             "Write the policy set, procedures and system description",
@@ -260,7 +260,7 @@ SERVICES = [
         "short": "Identity, cloud and Zero Trust",
         "menu_desc": "Design and build the controls, not just the diagram.",
         "summary": "Architecture reviews and hands-on engineering across identity, cloud and network "
-                   "— with reference designs your team can actually implement and a Zero Trust "
+                   ",  with reference designs your team can actually implement and a Zero Trust "
                    "path that doesn't require replacing everything at once.",
         "problem_head": "The diagram and the deployment stopped matching a long time ago",
         "problem": [
@@ -270,7 +270,7 @@ SERVICES = [
         ],
         "does": [
             "Review cloud architecture across Azure, AWS and GCP against a hardened reference design",
-            "Design identity and access architecture — Entra ID, Okta, conditional access, PAM, joiner-mover-leaver",
+            "Design identity and access architecture: Entra ID, Okta, conditional access, PAM, joiner-mover-leaver",
             "Build a staged Zero Trust roadmap sequenced by blast-radius reduction",
             "Segment networks and workloads without stalling delivery",
             "Design data protection: classification, encryption, key management, DLP that people don't route around",
@@ -287,7 +287,7 @@ SERVICES = [
             ("Implementation support", "We stay through build and validation, not just design"),
         ],
         "engagements": [
-            ("Architecture review", "2–4 weeks", "Deep review of one domain — cloud, identity or network."),
+            ("Architecture review", "2–4 weeks", "Deep review of one domain: cloud, identity or network."),
             ("Design and build", "6–16 weeks", "Target-state design plus hands-on implementation with your team."),
             ("Embedded architect", "Ongoing", "A senior architect in your design reviews and change process."),
         ],
@@ -298,7 +298,7 @@ SERVICES = [
         "title": "Product &amp; Application Security",
         "short": "Secure the thing you sell",
         "menu_desc": "Threat modeling, secure SDLC and pen test programs.",
-        "summary": "Security built into the product your customers buy — threat modeling, a secure "
+        "summary": "Security built into the product your customers buy: threat modeling, a secure "
                    "SDLC engineers don't resent, dependency and supply chain control, and a pen test "
                    "program that produces fixes instead of PDFs.",
         "problem_head": "Enterprise buyers are auditing your product, not your policies",
@@ -309,11 +309,11 @@ SERVICES = [
         ],
         "does": [
             "Threat model the architecture and the features that carry the most risk (STRIDE / PASTA)",
-            "Review multi-tenant isolation and authorisation logic — the failure mode that ends companies",
+            "Review multi-tenant isolation and authorisation logic, the failure mode that ends companies",
             "Design a secure SDLC with gates that fit your release cadence, not against it",
             "Stand up SAST, DAST, SCA and secrets scanning tuned to a signal-to-noise ratio engineers accept",
             "Build supply chain controls: dependency policy, SBOM, artifact signing, build integrity",
-            "Run the pen test program — scoping, vendor selection, triage, retest and closure",
+            "Run the pen test program: scoping, vendor selection, triage, retest and closure",
             "Review against OWASP ASVS / SAMM and produce a maturity path",
             "Prepare the security artefacts that unblock enterprise procurement"
         ],
@@ -338,7 +338,7 @@ SERVICES = [
         "short": "Move fast on AI, defensibly",
         "menu_desc": "Governance, threat modeling and controls for AI systems.",
         "summary": "A governance model that lets your teams ship AI instead of waiting for permission "
-                   "— built on NIST AI RMF and ISO 42001, with real controls for model, data and "
+                   ",  built on NIST AI RMF and ISO 42001, with real controls for model, data and "
                    "agent risk rather than a policy nobody reads.",
         "problem_head": "AI is already in production; the governance is not",
         "problem": [
@@ -347,13 +347,13 @@ SERVICES = [
             "Nobody can say what data leaves the building through which model, on what terms.",
         ],
         "does": [
-            "Inventory AI use across the business — including the shadow usage that already exists",
+            "Inventory AI use across the business: including the shadow usage that already exists",
             "Stand up an AI governance framework on NIST AI RMF and ISO/IEC 42001",
             "Define an intake and risk-tiering process that approves low-risk use in days, not quarters",
             "Threat model AI systems: prompt injection, data leakage, model and agent abuse (OWASP LLM Top 10)",
             "Set data handling rules for training, fine-tuning, RAG corpora and vendor retention terms",
             "Review AI vendor and model contracts for the terms that actually matter",
-            "Design controls for agentic systems — tool permissions, human-in-the-loop, blast radius, audit trail",
+            "Design controls for agentic systems: tool permissions, human-in-the-loop, blast radius, audit trail",
             "Prepare for the AI clauses now appearing in SOC 2, ISO and enterprise customer reviews",
         ],
         "deliverables": [
@@ -391,7 +391,7 @@ SERVICES = [
             "Design log strategy and retention that satisfies both investigators and the finance team",
             "Write an incident response plan with real playbooks, roles and decision authority",
             "Run tabletop exercises for executives, and technical exercises for responders",
-            "Build the ransomware playbook — including the decisions you want made before the day",
+            "Build the ransomware playbook: including the decisions you want made before the day",
             "Evaluate, onboard and hold your MSSP or MDR provider to a measurable standard",
             "Align business continuity and disaster recovery with tested, timed recovery objectives",
         ],
@@ -416,7 +416,7 @@ SERVICES = [
         "short": "Risk you inherit from others",
         "menu_desc": "Vendor risk programs and transaction security diligence.",
         "summary": "A vendor risk program that scales past a spreadsheet, and technical security "
-                   "diligence for acquisitions — so you find out what you're buying before the "
+                   "diligence for acquisitions, so you find out what you're buying before the "
                    "wire clears, not after integration.",
         "problem_head": "Most of your risk now sits on someone else's infrastructure",
         "problem": [
@@ -427,11 +427,11 @@ SERVICES = [
         "does": [
             "Build a tiered vendor risk program proportionate to actual data and access exposure",
             "Run assessments on critical vendors, including the ones already embedded",
-            "Set security requirements and contract language — DPAs, right to audit, breach notice, SLAs",
+            "Set security requirements and contract language: DPAs, right to audit, breach notice, SLAs",
             "Map concentration and fourth-party dependency risk",
             "Perform pre-close security due diligence on acquisition targets",
             "Quantify remediation cost and integration risk as a deal input",
-            "Plan post-close integration — identity merge, network join, control harmonisation",
+            "Plan post-close integration: identity merge, network join, control harmonisation",
             "Support divestiture and carve-out separation without leaving doors open",
         ],
         "deliverables": [
@@ -451,6 +451,25 @@ SERVICES = [
 ]
 
 SERVICE_BY_SLUG = {s["slug"]: s for s in SERVICES}
+
+# ============================================================================
+# DOMAIN MAP  (the coverage grid shown on the home page and in the hero panel)
+# ============================================================================
+
+DOMAINS = [
+    ("GOV", "Governance &amp; Risk", "Policy, risk register, board reporting, exceptions"),
+    ("CMP", "Compliance &amp; Audit", "SOC 2, ISO 27001, HIPAA, CMMC, evidence"),
+    ("IAM", "Identity &amp; Access", "SSO, MFA, PAM, joiner-mover-leaver, machine identity"),
+    ("DAT", "Data Protection", "Classification, encryption, key management, DLP"),
+    ("APP", "Product &amp; AppSec", "Threat modeling, secure SDLC, dependency and supply chain"),
+    ("CLD", "Cloud &amp; Platform", "Landing zone, posture management, policy as code"),
+    ("NET", "Network &amp; Segmentation", "Zero Trust, segmentation, egress control, telemetry"),
+    ("END", "Endpoint &amp; Device", "EDR, patching, privilege, configuration baseline"),
+    ("DET", "Detection &amp; Response", "Logging, detection engineering, IR, MSSP oversight"),
+    ("RES", "Resilience &amp; Recovery", "BC, DR, backup integrity, tested recovery objectives"),
+    ("TPR", "Third-Party Risk", "Tiering, assessment, contract terms, concentration risk"),
+    ("AIG", "AI Governance", "Inventory, risk tiering, model and agent controls"),
+]
 
 # ============================================================================
 # INDUSTRIES
@@ -508,10 +527,10 @@ CASE_STUDIES = [
                      "owned scope, control design or evidence, and the engineering team treated "
                      "every security request as an interruption.",
         "approach": [
-            "Scoped the audit to the production platform and the systems that genuinely touch customer data — cutting the control surface roughly in half.",
+            "Scoped the audit to the production platform and the systems that genuinely touch customer data, cutting the control surface roughly in half.",
             "Ran a gap analysis and split findings into audit-blocking, deal-blocking and neither. Only the first two got engineering time.",
             "Designed controls around the team's existing workflow so evidence was produced by working normally rather than by a quarterly scramble.",
-            "Operated the compliance platform properly — integrations, owners, automated evidence — instead of leaving it as a scoreboard.",
+            "Operated the compliance platform properly (integrations, owners, automated evidence) instead of leaving it as a scoreboard.",
             "Selected and managed the auditor, ran fieldwork, and kept engineers out of the audit except where they were genuinely needed.",
             "Built the trust package: architecture narrative, data flow, standard questionnaire answers and a public trust page.",
         ],
@@ -538,7 +557,7 @@ CASE_STUDIES = [
                      "and the plant network had no meaningful boundary between production machinery "
                      "and the corporate estate. The initial internal estimate was a full network rebuild.",
         "approach": [
-            "Mapped where CUI actually lived and moved — the answer was narrower than feared, and that narrowed the assessment boundary dramatically.",
+            "Mapped where CUI actually lived and moved, the answer was narrower than feared, and that narrowed the assessment boundary dramatically.",
             "Designed a purpose-built CUI enclave rather than dragging the entire company into scope.",
             "Segmented the OT network at the boundary that mattered, with change windows planned around production, not against it.",
             "Implemented the 110 NIST SP 800-171 controls against the enclave, with a documented, defensible System Security Plan and POA&amp;M.",
@@ -564,12 +583,12 @@ CASE_STUDIES = [
         "facts": [("Sector", "Healthcare provider"), ("Size", "Multi-site, ~2,000 staff"),
                   ("Engagement", "4 months"), ("Scope", "IR readiness, TPRM, detection coverage")],
         "challenge": "A peer organisation in the region had been down for eleven days after a "
-                     "ransomware event. The board asked a direct question — could that happen "
-                     "to us, and what would we do — and the honest answer was that nobody knew. "
+                     "ransomware event. The board asked a direct question. Could that happen "
+                     "to us, and what would we do? The honest answer was that nobody knew. "
                      "The IR plan predated the current EHR platform.",
         "approach": [
             "Rewrote the incident response plan around decision authority: who can disconnect what, who can call it, who talks to whom.",
-            "Built playbooks for the scenarios that were actually plausible — ransomware, business email compromise, and a critical third-party outage.",
+            "Built playbooks for the scenarios that were actually plausible: ransomware, business email compromise, and a critical third-party outage.",
             "Mapped detection coverage against MITRE ATT&amp;CK and closed the gaps that would have mattered in the peer incident.",
             "Held separate tabletop exercises: one technical, one executive, with the clinical leadership in the room for the second.",
             "Assessed the top third parties by clinical and data dependency, and wrote the requirements into renewal terms.",
@@ -600,7 +619,7 @@ INSIGHTS = [
         "read": "6 min read",
         "title": "Your compliance automation platform is a scoreboard, not a team",
         "teaser": "Vanta and Drata are genuinely good products. They also cannot design a control, "
-                  "scope an audit, or argue with an auditor — and the gap between those two facts "
+                  "scope an audit, or argue with an auditor, and the gap between those two facts "
                   "is where most failed certifications live.",
         "body": [
             ("p", "Every few weeks we meet a company that bought a compliance automation platform "
@@ -620,14 +639,14 @@ INSIGHTS = [
             ("h2", "What it does not do"),
             ("p", "Scoping is the first and largest one. The platform inherits whatever boundary you "
                   "give it. We have seen companies bring their entire corporate estate into a SOC 2 "
-                  "scope because nobody made a deliberate decision about the audit boundary — "
+                  "scope because nobody made a deliberate decision about the audit boundary, "
                   "roughly doubling the control surface, the evidence load and the cost, for zero "
                   "additional customer assurance."),
             ("p", "Control design is the second. A template policy says access is reviewed quarterly. "
                   "Whether your access review is a meaningful check or a rubber stamp on a CSV export "
                   "is a design question, and it is the question an experienced auditor asks in "
                   "fieldwork. The dashboard shows green either way."),
-            ("p", "The third is the system description — the narrative document at the front of a "
+            ("p", "The third is the system description, the narrative document at the front of a "
                   "SOC 2 report describing what your service actually does and how it is controlled. "
                   "It is written by you, judged by the auditor, and read by your customers. No "
                   "platform generates it, and a weak one undermines an otherwise clean report."),
@@ -663,24 +682,24 @@ INSIGHTS = [
             ("h2", "Tier by consequence, not by technology"),
             ("p", "The useful variable is not which model or which vendor. It is what happens when "
                   "the system is wrong, and what data it can reach. A workable three-tier split:"),
-            ("ul", ["<strong>Low</strong> — public or internal non-sensitive data, human reviews every output, no automated action. Self-service registration, no review. Approve in a day.",
-                    "<strong>Medium</strong> — confidential data, or output that materially informs a human decision. Lightweight structured review against a checklist. Days, not weeks.",
-                    "<strong>High</strong> — regulated or personal data, automated action without a human in the loop, safety or legal consequence, or external-facing autonomy. Full threat model, named accountable owner, monitoring and a kill switch."]),
+            ("ul", ["<strong>Low</strong>: public or internal non-sensitive data, human reviews every output, no automated action. Self-service registration, no review. Approve in a day.",
+                    "<strong>Medium</strong>: confidential data, or output that materially informs a human decision. Lightweight structured review against a checklist. Days, not weeks.",
+                    "<strong>High</strong>: regulated or personal data, automated action without a human in the loop, safety or legal consequence, or external-facing autonomy. Full threat model, named accountable owner, monitoring and a kill switch."]),
             ("p", "Most usage lands in the low tier. That is the point: it frees your reviewers to "
                   "spend real time on the ten percent that deserves it."),
             ("h2", "The controls that matter for agentic systems"),
             ("p", "Agents change the calculus, because the blast radius is no longer the answer text "
-                  "— it is whatever the tools can do. Scope tool permissions to the minimum, and "
+                  ",  it is whatever the tools can do. Scope tool permissions to the minimum, and "
                   "scope them per agent rather than per platform. Require human confirmation for any "
-                  "irreversible or externally visible action. Log the full chain — prompt, tool "
-                  "calls, arguments, results — because you cannot investigate what you did not "
+                  "irreversible or externally visible action. Log the full chain: prompt, tool "
+                  "calls, arguments, results. You cannot investigate what you did not "
                   "record. And test with adversarial inputs, since prompt injection through retrieved "
                   "content is the practical attack, not the theoretical one."),
             ("h2", "Map to a framework so it survives audit"),
             ("p", "NIST AI RMF gives you the functions and language. ISO/IEC 42001 gives you a "
                   "certifiable management system if customers are starting to ask. OWASP's LLM Top 10 "
                   "gives your engineers a concrete threat list. You do not need all three on day one, "
-                  "but pick one to anchor on early — retrofitting structure onto an improvised "
+                  "but pick one to anchor on early, retrofitting structure onto an improvised "
                   "process costs more than starting with it."),
             ("p", "The test of an AI governance program is not whether it has a policy. It is whether "
                   "the fastest path to shipping an AI feature runs through the process rather than "
@@ -705,7 +724,7 @@ INSIGHTS = [
             ("h2", "1. What are the three events that would hurt us most, and what would they cost?"),
             ("p", "A good answer is specific and quantified: named scenarios, a dollar and downtime "
                   "estimate, and the reasoning behind the estimate. A weak answer lists threat "
-                  "categories — ransomware, insider, nation-state — without connecting any of "
+                  "categories such as ransomware, insider or nation-state, without connecting any of "
                   "them to your business."),
             ("h2", "2. Which risks have we deliberately accepted?"),
             ("p", "Every organisation accepts risk. A healthy program has a written, dated, owned list "
@@ -721,7 +740,7 @@ INSIGHTS = [
                   "answer ties spend to specific movement on specific risks. A weak answer lists tools "
                   "deployed."),
             ("h2", "5. Which third parties could take us down?"),
-            ("p", "Expect a short, ranked list with the dependency named — and ideally an answer "
+            ("p", "Expect a short, ranked list with the dependency named, and ideally an answer "
                   "about fourth parties too. Most organisations discover their concentration risk "
                   "during someone else's outage."),
             ("h2", "6. What would you fix if I gave you unbudgeted money tomorrow?"),
@@ -731,7 +750,7 @@ INSIGHTS = [
             ("h2", "The meta-question"),
             ("p", "Notice that none of these ask for a maturity score, a framework percentage or a "
                   "colour. Those are useful internal instruments and poor governance instruments. "
-                  "Boards govern by understanding consequence, ownership and trade-off — and "
+                  "Boards govern by understanding consequence, ownership and trade-off, and "
                   "security is not special in that respect."),
         ],
     },
@@ -743,7 +762,7 @@ INSIGHTS = [
 
 FAQS = [
     ("How is this different from hiring a security consultancy?",
-     "Two things. First, the person who scopes your engagement is the person who does the work — "
+     "Two things. First, the person who scopes your engagement is the person who does the work, "
      "there is no pyramid where a partner sells and an analyst delivers. Second, we operate programs "
      "rather than just recommending them. If we tell you to build a control, we will help you build "
      "it and stay through the first audit cycle."),
@@ -753,8 +772,8 @@ FAQS = [
      "for its enterprise customers. We scope to your stage. If the right advice is “do three "
      "things and call us in a year,” that is what you will get."),
     ("What does a first conversation look like?",
-     "Thirty minutes, no deck. You describe what triggered the call — a customer requirement, an "
-     "audit date, an incident, a board question — and we tell you what we would do about it and "
+     "Thirty minutes, no deck. You describe what triggered the call: a customer requirement, an "
+     "audit date, an incident, a board question. Then we tell you what we would do about it and "
      "roughly what it takes. If we are not the right fit, we will say so and point you somewhere "
      "better."),
     ("Can you work alongside our existing MSSP or IT provider?",
@@ -763,7 +782,7 @@ FAQS = [
      "gap and hold the provider to a measurable standard on your behalf."),
     ("Do you actually implement, or only advise?",
      "Both. Assessments and strategy are how most engagements start, but our architecture, AppSec and "
-     "operations work is hands-on — building the guardrails, wiring the pipeline, tuning the "
+     "operations work is hands-on, building the guardrails, wiring the pipeline, tuning the "
      "detections, sitting in the design review. Advice that stops at the recommendation is where most "
      "security money is wasted."),
     ("How do you charge?",
@@ -779,7 +798,7 @@ FAQS = [
 LOGO_IMG = (
     '<img class="brand-mark" src="/assets/img/logo.png" '
     'srcset="/assets/img/logo.png 1x, /assets/img/logo@2x.png 2x, /assets/img/logo@3x.png 3x" '
-    'width="123" height="76" alt="NPS — Nila Pro Services" decoding="async">'
+    'width="123" height="76" alt="NPS, Nila Pro Services" decoding="async">'
 )
 
 
@@ -836,7 +855,7 @@ def footer_html():
           <span class="brand-rule" aria-hidden="true"></span>
           <span class="brand-sub">Security<br>Advisory</span>
         </a>
-        <p style="margin-top:16px">{SITE['legal_name']} — senior cybersecurity advisory,
+        <p style="margin-top:16px">{SITE['legal_name']}, senior cybersecurity advisory,
         compliance and security engineering for organisations that are held to a standard.</p>
         <div class="social">
           <a href="{SITE['linkedin']}" aria-label="LinkedIn" rel="noopener">{icon('linkedin')}</a>
@@ -880,7 +899,7 @@ def footer_html():
 
 def cta_band(head="Start with a straight conversation",
              body="Thirty minutes, no deck, no pitch. Tell us what prompted the call and we will "
-                  "tell you what we would do about it — including when the answer is that you "
+                  "tell you what we would do about it, including when the answer is that you "
                   "do not need us yet.",
              primary=("Book a call", None), secondary=("See our services", "/services.html")):
     p_href = primary[1] or SITE["booking_url"]
@@ -946,7 +965,7 @@ def page(path, title, description, body, active="", schema=None, canonical=None)
 {robots_meta}
 <link rel="canonical" href="{canon}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="{SITE['name']} — {SITE['legal_name']}">
+<meta property="og:site_name" content="{SITE['name']}, {SITE['legal_name']}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:url" content="{canon}">
@@ -1049,6 +1068,13 @@ def build_home():
           <div class="card-foot"><span class="link-arrow">Read the case study {icon('arrow')}</span></div>
         </a>""" for c in CASE_STUDIES
     )
+    domain_chips = "".join(
+        '<span class="dcode">%s</span>' % code for code, _, _ in DOMAINS
+    )
+    dmap = "".join(
+        '<div class="dtile"><span class="code">%s</span><span><b>%s</b><span>%s</span></span></div>'
+        % (code, name, desc) for code, name, desc in DOMAINS
+    )
     framework_chips = "".join(
         '<span class="chip">%s%s</span>' % (icon("check", "tick"), f)
         for f in ["NIST CSF 2.0", "ISO/IEC 27001", "SOC 2", "HIPAA / HITRUST", "CMMC 2.0",
@@ -1064,25 +1090,31 @@ def build_home():
         <span class="pill"><b>NPS</b> Nila Pro Services · Security Advisory</span>
         <h1>Security advice from people who have actually run the program.</h1>
         <p class="lede">We are a senior cybersecurity advisory practice. We assess real risk, build
-        the controls, run the certification and stay through the audit — so security stops being
+        the controls, run the certification and stay through the audit, so security stops being
         the thing that slows your business down and starts being the reason enterprise buyers say yes.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="{SITE['booking_url']}">Book a call {icon('arrow')}</a>
           <a class="btn btn-ghost" href="/services.html">See what we do</a>
         </div>
       </div>
-      <div class="readout reveal" aria-label="Illustrative security program view">
-        <div class="readout-head"><span>Program view</span><span class="dot"></span></div>
-        <div class="readout-row"><span class="label">Risk register</span><span class="value">ranked &amp; owned</span>
-          <span class="bar"><i data-w="86%"></i></span></div>
-        <div class="readout-row"><span class="label">Audit readiness</span><span class="value">evidence live</span>
-          <span class="bar"><i data-w="74%"></i></span></div>
-        <div class="readout-row"><span class="label">Detection coverage</span><span class="value">ATT&amp;CK mapped</span>
-          <span class="bar"><i data-w="68%"></i></span></div>
-        <div class="readout-row"><span class="label">Third-party exposure</span><span class="value">tiered</span>
-          <span class="bar"><i data-w="61%"></i></span></div>
-        <div class="readout-row"><span class="label">Board reporting</span><span class="value">quarterly cadence</span>
-          <span class="bar"><i data-w="92%"></i></span></div>
+      <div class="hero-visual">
+        <div class="pulse" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="deck" aria-hidden="true">
+          <div class="deck-inner">
+            <div class="plane"></div><div class="plane"></div><div class="plane"></div>
+          </div>
+        </div>
+        <div class="readout" aria-label="Illustrative security program view">
+          <div class="readout-head"><span>Program view</span><span class="dot"></span></div>
+          <div class="domains-label">Twelve domains, one map</div>
+          <div class="domains">{domain_chips}</div>
+          <div class="readout-row"><span class="label">Risk register</span><span class="value">ranked &amp; owned</span>
+            <span class="bar"><i data-w="86%"></i></span></div>
+          <div class="readout-row"><span class="label">Audit readiness</span><span class="value">evidence live</span>
+            <span class="bar"><i data-w="74%"></i></span></div>
+          <div class="readout-row"><span class="label">Detection coverage</span><span class="value">ATT&amp;CK mapped</span>
+            <span class="bar"><i data-w="68%"></i></span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1146,6 +1178,26 @@ def build_home():
 <section class="section">
   <div class="wrap">
     <div class="section-head">
+      <span class="eyebrow">Coverage</span>
+      <h2>Twelve domains. You choose the scope, deliberately.</h2>
+      <p>Everything here is optional. What you leave out, you are choosing to accept,
+      and we write that down so the decision is yours rather than an oversight.</p>
+    </div>
+    <div class="dmap reveal">
+      {dmap}
+      <div class="dtile dtile--note">
+        <span class="k">Scoping in practice</span>
+        <p>Under roughly 500 staff, NET, END and DET usually run as one operations
+        domain. Under roughly 150, most of the value sits in GOV, CMP, IAM, DAT and
+        a single operations function. Bigger is not better, matched is better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
       <span class="eyebrow">How an engagement runs</span>
       <h2>No mystery, no ninety-day discovery phase.</h2>
     </div>
@@ -1153,7 +1205,7 @@ def build_home():
       <div class="step"><h3>Orient</h3><p>A working session, not an interrogation. We learn what the
       business does, what is at stake, and what triggered the call. Usually one week.</p></div>
       <div class="step"><h3>Assess</h3><p>Evidence-based review of the domains in scope. You get the
-      findings as we find them — no surprises saved for the final read-out.</p></div>
+      findings as we find them, no surprises saved for the final read-out.</p></div>
       <div class="step"><h3>Sequence</h3><p>A ranked plan with owners, effort and dates. Sequenced by
       risk reduced per dollar, agreed with you before anyone starts building.</p></div>
       <div class="step"><h3>Execute</h3><p>We build alongside your team, then hand over with the
@@ -1235,7 +1287,7 @@ def build_home():
         "serviceType": [s["title"].replace("&amp;", "&") for s in SERVICES],
     }
     page("index.html",
-         "NPS — Cybersecurity Advisory, vCISO &amp; Compliance | Nila Pro Services",
+         "NPS, Cybersecurity Advisory, vCISO &amp; Compliance | Nila Pro Services",
          "Senior cybersecurity advisory: virtual CISO, risk strategy, SOC 2 / ISO 27001 / HIPAA / "
          "CMMC compliance, security architecture, AppSec, AI governance and incident readiness.",
          body, active="home", schema=schema)
@@ -1253,8 +1305,8 @@ def build_services_index():
     body = f"""
 {page_hero([("Home", "/"), ("Services", None)], "Services",
            "Depth where it matters, across the whole security program.",
-           "Eight practice areas that fit together. Most clients start with one — an audit "
-           "deadline, a board question, an incident — and grow into a program run by the same "
+           "Eight practice areas that fit together. Most clients start with one: an audit "
+           "deadline, a board question, an incident, and grow into a program run by the same "
            "people who did the first assessment.")}
 
 <section class="section">
@@ -1270,7 +1322,7 @@ def build_services_index():
         <span class="eyebrow">Engagement models</span>
         <h2>Scoped so you know what you are buying.</h2>
         <p class="lede">Fixed fee for defined projects. Monthly retainer for ongoing leadership and
-        embedded work. Scope, deliverables and dates written down before we start — no hourly
+        embedded work. Scope, deliverables and dates written down before we start, no hourly
         billing surprises.</p>
       </div>
       <div class="table-wrap reveal">
@@ -1291,11 +1343,11 @@ def build_services_index():
 
 {cta_band(head="Not sure which one you need?",
           body="That is a normal place to start. Describe the situation and we will tell you which "
-               "of these fits — or that none of them do yet.",
+               "of these fits, or that none of them do yet.",
           secondary=("See case studies", "/case-studies.html"))}
 """
     page("services.html",
-         "Cybersecurity Services — vCISO, Compliance, Architecture | NPS",
+         "Cybersecurity Services, vCISO, Compliance, Architecture | NPS",
          "Eight security practice areas: virtual CISO, risk strategy, compliance and audit readiness, "
          "security architecture, product security, AI governance, security operations and third-party risk.",
          body, active="services")
@@ -1360,7 +1412,7 @@ def build_service_pages():
     <div class="section-head">
       <span class="eyebrow">Deliverables</span>
       <h2>What you actually receive.</h2>
-      <p>Artefacts your team can operate after we leave — not a slide deck and a wave goodbye.</p>
+      <p>Artefacts your team can operate after we leave, not a slide deck and a wave goodbye.</p>
     </div>
     <div class="table-wrap reveal">
       <table>
@@ -1391,14 +1443,14 @@ def build_service_pages():
 </section>
 
 {cta_band(head="Talk it through with someone senior",
-          body="Thirty minutes on your situation specifically — what is driving the timeline, "
+          body="Thirty minutes on your situation specifically, what is driving the timeline, "
                "what you have already tried, and what we would do first.",
           secondary=("All services", "/services.html"))}
 """
         clean_title = s["title"].replace("&amp;", "&")
         page("services/%s.html" % s["slug"],
              "%s | NPS Security Advisory" % clean_title,
-             html.escape(s["summary"].replace("&amp;", "&").replace("—", "-"))[:300],
+             html.escape(s["summary"].replace("&amp;", "&").replace(", ", "-"))[:300],
              body, active="services")
 
 
@@ -1416,7 +1468,7 @@ def build_industries():
     body = f"""
 {page_hero([("Home", "/"), ("Industries", None)], "Industries",
            "Regulated, audited, and accountable to somebody.",
-           "We work best where security is not optional — where a regulator, a prime contractor, "
+           "We work best where security is not optional, where a regulator, a prime contractor, "
            "an insurer or your largest customer is going to check. Context matters: the same control "
            "means different things in a hospital and a factory.")}
 
@@ -1469,7 +1521,7 @@ def build_case_studies():
 </section>
 
 {cta_band(head="Your situation is probably not identical",
-          body="It rarely is. Describe it and we will tell you what we would actually do — "
+          body="It rarely is. Describe it and we will tell you what we would actually do, "
                "and roughly what it takes.",
           secondary=("See our services", "/services.html"))}
 """
@@ -1655,7 +1707,7 @@ def build_about():
     body = f"""
 {page_hero([("Home", "/"), ("About", None)], "About NPS",
            "A security practice, not a staffing desk.",
-           "NPS — Nila Pro Services — is a cybersecurity advisory firm. We work with "
+           "NPS, Nila Pro Services, is a cybersecurity advisory firm. We work with "
            "organisations that are accountable to somebody: a regulator, a prime contractor, an "
            "insurer, or the enterprise customer whose security review is holding up the contract.")}
 
@@ -1673,7 +1725,7 @@ def build_about():
         the person signing the cheque can evaluate.</p>
         <h2>What we are not</h2>
         <p>We are not a managed security service, and we will not pretend that monitoring is a
-        strategy. We are not a resale channel — we hold no vendor commissions, which is why we
+        strategy. We are not a resale channel, we hold no vendor commissions, which is why we
         can tell you that the tool you are about to buy will not fix the problem you have. And we
         are not a body shop: every engagement is scoped to an outcome, not to a headcount.</p>
       </div>
@@ -1709,7 +1761,7 @@ def build_about():
       <div>
         <span class="eyebrow">Credentials</span>
         <h2>Certification is table stakes. Experience is the differentiator.</h2>
-        <p class="lede">Our practitioners hold the credentials you would expect — and, more
+        <p class="lede">Our practitioners hold the credentials you would expect and, more
         usefully, have run the programs those credentials describe. Ask us about the engagement,
         not the acronym.</p>
       </div>
@@ -1728,7 +1780,7 @@ def build_about():
 
 {cta_band()}
 """
-    page("about.html", "About NPS — Nila Pro Services Security Advisory",
+    page("about.html", "About NPS, Nila Pro Services Security Advisory",
          "NPS is a senior-led cybersecurity advisory firm based in New Jersey, serving regulated "
          "and audited organisations across the United States.",
          body, active="about")
@@ -1774,7 +1826,7 @@ def build_contact():
           <div class="field">
             <label for="topic">What is this about?</label>
             <select id="topic" name="topic">
-              <option>Not sure yet — let's talk</option>
+              <option>Not sure yet, let's talk</option>
               {svc_options}
               <option>Something else</option>
             </select>
@@ -1786,7 +1838,7 @@ def build_contact():
               <option>Within 30 days</option>
               <option>This quarter</option>
               <option>This year</option>
-              <option>Active incident — urgent</option>
+              <option>Active incident, urgent</option>
             </select>
           </div>
           <div class="field">
@@ -1830,7 +1882,7 @@ def build_contact():
   </div>
 </section>
 """
-    page("contact.html", "Contact NPS — Cybersecurity Advisory | Nila Pro Services",
+    page("contact.html", "Contact NPS, Cybersecurity Advisory | Nila Pro Services",
          "Get in touch with NPS for cybersecurity advisory, vCISO services, compliance programs and "
          "incident readiness. Based in South Amboy, New Jersey.",
          body, active="contact")
@@ -1842,7 +1894,7 @@ def build_legal():
            "How {name} handles the information you share with us.".format(name=SITE['legal_name']),
            buttons=False)}
 <section class="section"><div class="wrap"><article class="prose">
-  <p><em>Last updated: 5 August 2026. This is a starting template — have counsel review it
+  <p><em>Last updated: 5 August 2026. This is a starting template, have counsel review it
   before launch.</em></p>
   <h2>What we collect</h2>
   <p>When you submit our contact form we collect the name, organisation, email address, phone number
@@ -1878,7 +1930,7 @@ def build_legal():
 {page_hero([("Home", "/"), ("Terms", None)], "Legal", "Terms of Use",
            "The terms that apply to your use of this website.", buttons=False)}
 <section class="section"><div class="wrap"><article class="prose">
-  <p><em>Last updated: 5 August 2026. This is a starting template — have counsel review it
+  <p><em>Last updated: 5 August 2026. This is a starting template, have counsel review it
   before launch.</em></p>
   <h2>Website content</h2>
   <p>Content on this site is provided for general information. It does not constitute security,
@@ -1938,7 +1990,7 @@ def build_seo_assets():
 
     with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
         if SITE.get("preview_mode"):
-            f.write("# PREVIEW MODE — site is not ready to be indexed.\n"
+            f.write("# PREVIEW MODE, site is not ready to be indexed.\n"
                     "# Set SITE[\"preview_mode\"] = False in build.py before launch.\n"
                     "User-agent: *\nDisallow: /\n")
         else:

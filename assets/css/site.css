@@ -1,12 +1,12 @@
 /* ==========================================================================
-   NPS — Nila Pro Services
+   NPS, Nila Pro Services
    Design system: "dark technical authority"
    ========================================================================== */
 
 /* ---------- Self-hosted fonts (no third-party requests) ----------
-   Manrope — Mikhail Sharanda, SIL Open Font License 1.1
-   Bricolage Grotesque — Mathieu Triay, SIL Open Font License 1.1
-   JetBrains Mono — JetBrains, SIL Open Font License 1.1
+   Manrope, Mikhail Sharanda, SIL Open Font License 1.1
+   Bricolage Grotesque, Mathieu Triay, SIL Open Font License 1.1
+   JetBrains Mono, JetBrains, SIL Open Font License 1.1
    All three are variable fonts or subsets; latin only. 124 KB total.       */
 @font-face {
   font-family: "Manrope";
@@ -45,7 +45,7 @@
   --text-2:      #A9B8CC;
   --text-3:      #6F8098;
 
-  /* Brand — derived from the NPS logo (#0088D1 blue / #0BB04A green),
+  /* Brand: derived from the NPS logo (#0088D1 blue / #0BB04A green),
      brightened for legibility on the dark base. To try the alternatives,
      swap the four --accent* values for one of the sets below.
        Green-led:  #2ED573 / #2AA8EE / rgba(46,213,115,.12) / rgba(46,213,115,.32)
@@ -441,7 +441,7 @@ body.nav-open .nav-toggle .ico-open { display: none; }
   font-weight: 700;
 }
 
-/* Hero side panel — "posture readout" */
+/* Hero side panel, "posture readout" */
 .readout {
   background: linear-gradient(160deg, var(--surface) 0%, var(--bg-2) 100%);
   border: 1px solid var(--line);
@@ -905,3 +905,200 @@ td:first-child { color: var(--text); font-weight: 500; }
   padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
+
+/* ==========================================================================
+   Hero visual: radiating pulse + isometric plane stack + flat program panel
+   Pure CSS/SVG, no libraries. Frozen entirely under prefers-reduced-motion.
+   ========================================================================== */
+.hero-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 520px;
+  isolation: isolate;
+}
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 6% -6%;
+  z-index: -4;
+  background: radial-gradient(46% 46% at 52% 48%, rgba(61,180,242,.22), transparent 70%),
+              radial-gradient(38% 38% at 34% 66%, rgba(46,213,115,.16), transparent 72%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* --- layer 1: radiating pulse ------------------------------------------- */
+.pulse { position: absolute; inset: 0; display: grid; place-items: center; z-index: -3; pointer-events: none; }
+.pulse i {
+  position: absolute;
+  width: 58%;
+  aspect-ratio: 1;
+  border: 1.5px solid var(--accent-line);
+  border-radius: 34%;
+  transform: rotate(45deg) scale(0.4);
+  opacity: 0;
+  animation: pulseOut 7s cubic-bezier(.2,.6,.3,1) infinite;
+}
+.pulse i:nth-child(2) { animation-delay: 2.33s; }
+.pulse i:nth-child(3) { animation-delay: 4.66s; }
+@keyframes pulseOut {
+  0%   { transform: rotate(45deg) scale(0.35); opacity: 0; }
+  12%  { opacity: .8; }
+  70%  { opacity: .2; }
+  100% { transform: rotate(45deg) scale(1.75); opacity: 0; }
+}
+
+/* --- layer 2: isometric plane stack -------------------------------------- */
+.deck {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: -2;
+  perspective: 1400px;
+  pointer-events: none;
+}
+.deck-inner {
+  position: relative;
+  width: 104%;
+  margin-left: -10%;
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  transform: rotateX(58deg) rotateZ(-40deg);
+  animation: deckFloat 11s ease-in-out infinite;
+}
+.plane {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.10);
+  background:
+    linear-gradient(140deg, rgba(61,180,242,.30), rgba(46,213,115,.14) 55%, transparent 82%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, transparent 1px 34px);
+  box-shadow: 0 30px 60px -40px rgba(0,0,0,.9);
+}
+.plane:nth-child(1) { transform: translateZ(0);     opacity: .72; }
+.plane:nth-child(2) { transform: translateZ(58px);  opacity: .85; border-color: rgba(61,180,242,.42); }
+.plane:nth-child(3) { transform: translateZ(116px); opacity: 1;   border-color: rgba(46,213,115,.42); }
+.plane::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.16) 48%, transparent 58%);
+  background-size: 260% 100%;
+  animation: sweep 6.5s ease-in-out infinite;
+}
+.plane:nth-child(2)::after { animation-delay: .5s; }
+.plane:nth-child(3)::after { animation-delay: 1s; }
+@keyframes sweep { 0%,72% { background-position: 190% 0; } 100% { background-position: -60% 0; } }
+@keyframes deckFloat {
+  0%,100% { transform: rotateX(58deg) rotateZ(-40deg) translateY(0); }
+  50%     { transform: rotateX(54deg) rotateZ(-44deg) translateY(-14px); }
+}
+
+/* --- layer 3: the flat program panel sits in front ----------------------- */
+.hero-visual .readout {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 388px);
+  margin-top: 34px;
+  margin-left: auto;
+  border-color: var(--line-strong);
+  box-shadow: 0 40px 90px -40px rgba(0,0,0,.95);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: linear-gradient(160deg, rgba(14,22,38,.94) 0%, rgba(10,16,27,.92) 100%);
+}
+
+/* --- domain code chips --------------------------------------------------- */
+.domains {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 5px;
+  padding: 16px 0 4px;
+}
+.dcode {
+  display: grid;
+  place-items: center;
+  padding: 7px 0;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.025);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  animation: chipScan 9s linear infinite;
+}
+.dcode:nth-child(1){animation-delay:0s}    .dcode:nth-child(2){animation-delay:.25s}
+.dcode:nth-child(3){animation-delay:.5s}   .dcode:nth-child(4){animation-delay:.75s}
+.dcode:nth-child(5){animation-delay:1s}    .dcode:nth-child(6){animation-delay:1.25s}
+.dcode:nth-child(7){animation-delay:1.5s}  .dcode:nth-child(8){animation-delay:1.75s}
+.dcode:nth-child(9){animation-delay:2s}    .dcode:nth-child(10){animation-delay:2.25s}
+.dcode:nth-child(11){animation-delay:2.5s} .dcode:nth-child(12){animation-delay:2.75s}
+@keyframes chipScan {
+  0%, 26%, 100% { border-color: var(--line); background: rgba(255,255,255,.025); color: var(--text-3); }
+  6%, 16%       { border-color: var(--accent-line); background: var(--accent-dim); color: var(--accent); }
+}
+.domains-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding-top: 14px;
+}
+
+@media (max-width: 900px) {
+  .hero-visual { min-height: 400px; }
+  .deck-inner { width: 92%; }
+}
+
+/* ==========================================================================
+   Domain map section
+   ========================================================================== */
+.dmap { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; }
+@media (max-width: 980px) { .dmap { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 560px) { .dmap { grid-template-columns: 1fr; } }
+.dtile {
+  display: flex;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+.dtile:hover { border-color: var(--accent-line); background: var(--surface-2); transform: translateY(-2px); }
+.dtile .code {
+  flex: none;
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: 10px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-line);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.dtile b { display: block; font-family: var(--font-head); font-size: 0.97rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.dtile span { display: block; font-size: 0.83rem; color: var(--text-3); line-height: 1.5; }
+.dtile--note {
+  flex-direction: column;
+  gap: 10px;
+  background: linear-gradient(150deg, var(--surface-2), var(--bg-2));
+  border-color: var(--accent-line);
+}
+.dtile--note .k {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.dtile--note p { font-size: 0.85rem; color: var(--text-2); margin: 0; }
