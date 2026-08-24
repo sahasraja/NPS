@@ -91,7 +91,19 @@ dark-background version.
   This design deliberately uses none, which keeps it clean, but a single good
   photo of you on the About page would do more for conversion than anything else
   on this list.
-- **Analytics**: if you want any, use something privacy-preserving (Plausible,
+- **Analytics, wired and waiting for your ID.** Google Analytics 4 is built in
+  but switched off. Paste your Measurement ID into `SITE["ga_measurement_id"]`
+  in `build.py` (GA4 Admin, Data Streams, Web, it looks like `G-XXXXXXXXXX`),
+  rerun `python3 build.py`, and it goes live. Leave it empty and no analytics
+  code is emitted at all. Tracked out of the box: booking clicks with the CTA
+  that produced them, contact form starts and submissions, read depth on
+  service pages, and content grouping so service pages report as a set. GA4
+  sets cookies, so a consent banner is included and analytics stays denied
+  until a visitor accepts. Note this is the one thing on the site that makes a
+  third-party request. Once live, add your own IP as internal traffic in GA4
+  or your visits will dominate the numbers.
+
+- **Other analytics options**: if you want any, use something privacy-preserving (Plausible,
   Fathom, Cloudflare Web Analytics). The site currently sets no cookies and makes
   no third-party requests at all, which means you need no cookie banner. Don't
   give that up for Google Analytics without deciding it's worth it.

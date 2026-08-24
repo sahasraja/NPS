@@ -83,6 +83,85 @@
     });
   }
 
+  /* ------------------------------------------------------------------
+     Analytics. Everything below is inert unless a GA4 Measurement ID is
+     set in build.py, because the gtag stub only exists when it is.
+     ------------------------------------------------------------------ */
+  var GA_ON = typeof window.gtag === 'function';
+  var CONSENT_KEY = 'nps-analytics-consent';
+
+  function readConsent() {
+    try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+  }
+  function writeConsent(v) {
+    try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {}
+  }
+  function track(name, params) {
+    if (GA_ON) window.gtag('event', name, params || {});
+  }
+
+  /* Consent banner. Shown once, remembered per browser. */
+  var consent = document.getElementById('consent');
+  if (consent && GA_ON) {
+    if (!readConsent()) {
+      setTimeout(function () { consent.hidden = false; }, 900);
+    }
+    consent.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-consent]');
+      if (!btn) return;
+      var choice = btn.getAttribute('data-consent');
+      writeConsent(choice);
+      window.gtag('consent', 'update', { analytics_storage: choice });
+      consent.hidden = true;
+    });
+  }
+
+  /* KPI 1: booking clicks, with the page and the CTA that produced them */
+  document.querySelectorAll('a[href*="bookwithme"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      track('book_call_click', {
+        cta_location: a.getAttribute('data-cta') || 'other',
+        page_path: location.pathname,
+        page_title: document.title
+      });
+    });
+  });
+
+  /* KPI 2: contact form, started vs completed */
+  var cform = document.querySelector('form[data-contact]');
+  if (cform) {
+    var started = false;
+    cform.addEventListener('input', function () {
+      if (started) return;
+      started = true;
+      track('form_start', { form_id: 'contact' });
+    }, { once: false });
+    cform.addEventListener('submit', function () {
+      track('generate_lead', {
+        form_id: 'contact',
+        topic: (cform.querySelector('#topic') || {}).value || '',
+        timeline: (cform.querySelector('#timeline') || {}).value || ''
+      });
+    });
+  }
+
+  /* KPI 3: did they actually read the service page, or bounce off the top */
+  if (GA_ON && /\/services\//.test(location.pathname)) {
+    var fired = {};
+    var onDepth = function () {
+      var doc = document.documentElement;
+      var pct = (window.scrollY + window.innerHeight) / doc.scrollHeight * 100;
+      [50, 90].forEach(function (mark) {
+        if (pct >= mark && !fired[mark]) {
+          fired[mark] = true;
+          track('read_depth', { percent: mark, page_path: location.pathname });
+        }
+      });
+      if (fired[90]) window.removeEventListener('scroll', onDepth);
+    };
+    window.addEventListener('scroll', onDepth, { passive: true });
+  }
+
   /* Current year in footer */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = new Date().getFullYear();

@@ -1159,3 +1159,24 @@ td:first-child { color: var(--text); font-weight: 500; }
   background: #FF7280;
   box-shadow: 0 16px 40px -14px rgba(255, 90, 110, 0.7);
 }
+
+/* ---------- Consent banner (only rendered when analytics is configured) ---------- */
+.consent {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 300;
+  width: min(calc(100vw - 40px), 400px);
+  padding: 20px 22px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: consentIn .35s cubic-bezier(.22,.8,.3,1);
+}
+.consent[hidden] { display: none; }
+.consent p { font-size: 0.85rem; color: var(--text-2); line-height: 1.55; margin-bottom: 16px; }
+.consent b { color: var(--text); }
+.consent-actions { display: flex; gap: 10px; }
+@keyframes consentIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (max-width: 520px) { .consent { left: 12px; right: 12px; bottom: 12px; width: auto; } }

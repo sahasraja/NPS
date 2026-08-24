@@ -50,6 +50,12 @@ SITE = {
     # below; flip this to True to bring back the nav link, the footer link,
     # the home page section and the individual pages.
     "show_case_studies": False,
+
+    # ---- Analytics -------------------------------------------------------
+    # Paste your GA4 Measurement ID here (Admin -> Data Streams -> Web -> it
+    # looks like "G-XXXXXXXXXX"). Leave it empty and no analytics code is
+    # emitted at all: no script tag, no cookie banner, no third-party request.
+    "ga_measurement_id": "",
 }
 
 # -- PLACEHOLDER CONTENT ------------------------------------------------------
@@ -848,7 +854,7 @@ def header_html(active):
       <a class="nav-link{cls('industries')}" href="/industries.html">Industries</a>
 {cases_nav}      <a class="nav-link{cls('insights')}" href="/insights.html">Insights</a>
       <a class="nav-link{cls('about')}" href="/about.html">About</a>
-      <a class="btn btn-primary btn-sm header-cta" href="{SITE['booking_url']}" rel="noopener">Book a call</a>
+      <a class="btn btn-primary btn-sm header-cta" data-cta="header" href="{SITE['booking_url']}" rel="noopener">Book a call</a>
     </nav>
   </div>
 </header>"""
@@ -925,7 +931,7 @@ def cta_band(head="Start with a straight conversation",
       <h2>{head}</h2>
       <p>{body}</p>
       <div class="btn-row" style="margin-top:28px">
-        <a class="btn btn-primary" href="{p_href}">{primary[0]} {icon('arrow')}</a>
+        <a class="btn btn-primary" data-cta="cta-band" href="{p_href}">{primary[0]} {icon('arrow')}</a>
         {sec}
       </div>
     </div>
@@ -964,10 +970,48 @@ def page(path, title, description, body, active="", schema=None, canonical=None)
                    '<!-- PREVIEW MODE: set SITE["preview_mode"] = False before launch -->'
                    if SITE.get("preview_mode") else
                    '<meta name="robots" content="index,follow">')
+    ga_id = SITE.get("ga_measurement_id", "").strip()
+    ga_block = ""
+    if ga_id:
+        group = "service" if path.startswith("services/") else (
+                "insight" if path.startswith("insights/") else "site")
+        ga_block = (
+            "<script>\n"
+            "  window.dataLayer = window.dataLayer || [];\n"
+            "  function gtag(){dataLayer.push(arguments);}\n"
+            "  gtag('consent', 'default', {\n"
+            "    ad_storage: 'denied', ad_user_data: 'denied',\n"
+            "    ad_personalization: 'denied', analytics_storage: 'denied',\n"
+            "    wait_for_update: 500\n"
+            "  });\n"
+            "  try {\n"
+            "    if (localStorage.getItem('nps-analytics-consent') === 'granted') {\n"
+            "      gtag('consent', 'update', { analytics_storage: 'granted' });\n"
+            "    }\n"
+            "  } catch (e) {}\n"
+            "  gtag('js', new Date());\n"
+            "  gtag('config', '%s', { content_group: '%s', anonymize_ip: true });\n"
+            "</script>\n"
+            "<script async src=\"https://www.googletagmanager.com/gtag/js?id=%s\"></script>"
+            % (ga_id, group, ga_id)
+        )
     schema_block = ""
     if schema:
         schema_block = ('<script type="application/ld+json">%s</script>'
                         % json.dumps(schema, separators=(",", ":")))
+    consent_banner = ""
+    if ga_id:
+        consent_banner = (
+            '<div class="consent" id="consent" hidden>\n'
+            '  <p><b>Analytics only.</b> We use Google Analytics to see which pages get read '
+            'and where visitors come from. No advertising, no profiling, no data sold. '
+            'Decline and nothing is stored.</p>\n'
+            '  <div class="consent-actions">\n'
+            '    <button class="btn btn-primary btn-sm" data-consent="granted">Accept</button>\n'
+            '    <button class="btn btn-ghost btn-sm" data-consent="denied">Decline</button>\n'
+            '  </div>\n'
+            '</div>'
+        )
     doc = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -991,6 +1035,7 @@ def page(path, title, description, body, active="", schema=None, canonical=None)
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
+{ga_block}
 {schema_block}
 </head>
 <body>
@@ -999,6 +1044,7 @@ def page(path, title, description, body, active="", schema=None, canonical=None)
 {body}
 </main>
 {footer_html()}
+{consent_banner}
 <script src="/assets/js/site.js" defer></script>
 </body>
 </html>
@@ -1026,7 +1072,7 @@ def page_hero(crumbs, eyebrow, h1, lede, buttons=True):
     btns = ""
     if buttons:
         btns = f"""<div class="btn-row" style="margin-top:30px">
-      <a class="btn btn-primary" href="{SITE['booking_url']}">Book a call {icon('arrow')}</a>
+      <a class="btn btn-primary" data-cta="page-hero" href="{SITE['booking_url']}">Book a call {icon('arrow')}</a>
       <a class="btn btn-ghost" href="/services.html">All services</a>
     </div>"""
     return f"""<section class="page-hero">
@@ -1120,7 +1166,7 @@ def build_home():
         the controls, run the certification and stay through the audit, so security stops being
         the thing that slows your business down and starts being the reason enterprise buyers say yes.</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="{SITE['booking_url']}">Book a call {icon('arrow')}</a>
+          <a class="btn btn-primary" data-cta="hero" href="{SITE['booking_url']}">Book a call {icon('arrow')}</a>
           <a class="btn btn-ghost" href="/services.html">See what we do</a>
         </div>
       </div>
