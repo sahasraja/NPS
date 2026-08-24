@@ -35,10 +35,21 @@
       gtag('consent', 'update', { analytics_storage: 'granted' });
     }
   } catch (e) {}
+  var npsHost = location.hostname;
+  var npsBlocked = ["localhost", "127.0.0.1", ""].some(function (h) {
+    return h === npsHost || (h && npsHost.slice(-h.length) === h);
+  });
   gtag('js', new Date());
-  gtag('config', 'G-0TWWXMD13Z', { content_group: 'insight', anonymize_ip: true });
+  if (!npsBlocked) {
+    gtag('config', 'G-0TWWXMD13Z', { content_group: 'insight', anonymize_ip: true });
+  }
+  window.npsAnalyticsOff = npsBlocked;
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0TWWXMD13Z"></script>
+<script>if (!window.npsAnalyticsOff) {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0TWWXMD13Z';
+  document.head.appendChild(s);
+}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Six questions a board should ask, and what a good answer sounds like","datePublished":"2026-05-19","author":{"@type":"Organization","name":"NPS"},"publisher":{"@type":"Organization","name":"NPS"},"description":"\u201cAre we secure?\u201d is unanswerable and everyone in the room knows it. These six are answerable, and the quality of the answer tells you more than any maturity score."}</script>
 </head>
 <body>

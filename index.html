@@ -35,10 +35,21 @@
       gtag('consent', 'update', { analytics_storage: 'granted' });
     }
   } catch (e) {}
+  var npsHost = location.hostname;
+  var npsBlocked = ["localhost", "127.0.0.1", ""].some(function (h) {
+    return h === npsHost || (h && npsHost.slice(-h.length) === h);
+  });
   gtag('js', new Date());
-  gtag('config', 'G-0TWWXMD13Z', { content_group: 'site', anonymize_ip: true });
+  if (!npsBlocked) {
+    gtag('config', 'G-0TWWXMD13Z', { content_group: 'site', anonymize_ip: true });
+  }
+  window.npsAnalyticsOff = npsBlocked;
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0TWWXMD13Z"></script>
+<script>if (!window.npsAnalyticsOff) {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0TWWXMD13Z';
+  document.head.appendChild(s);
+}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"NPS","alternateName":"NPS","url":"https://nilaproservices.com","description":"Senior cybersecurity advisory, compliance and security engineering.","email":"info@nilaproservices.com","address":{"@type":"PostalAddress","streetAddress":"924 US Highway 9, Suite 311","addressLocality":"South Amboy","addressRegion":"NJ","postalCode":"08879","addressCountry":"US"},"areaServed":"US","serviceType":["Virtual & Fractional CISO","Cyber Risk & Security Strategy","Compliance & Audit Readiness","Security Architecture & Engineering","Product & Application Security","AI Governance & Secure AI Adoption","Security Operations & Incident Response","Third-Party & M&A Security Due Diligence"]}</script>
 </head>
 <body>

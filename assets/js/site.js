@@ -87,7 +87,7 @@
      Analytics. Everything below is inert unless a GA4 Measurement ID is
      set in build.py, because the gtag stub only exists when it is.
      ------------------------------------------------------------------ */
-  var GA_ON = typeof window.gtag === 'function';
+  var GA_ON = typeof window.gtag === 'function' && !window.npsAnalyticsOff;
   var CONSENT_KEY = 'nps-analytics-consent';
 
   function readConsent() {

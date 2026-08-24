@@ -56,6 +56,12 @@ SITE = {
     # looks like "G-XXXXXXXXXX"). Leave it empty and no analytics code is
     # emitted at all: no script tag, no cookie banner, no third-party request.
     "ga_measurement_id": "G-0TWWXMD13Z",
+
+    # Hostnames where analytics must NOT run. Local previews are excluded
+    # already. Once the site is live on nilaproservices.com, add
+    # "sahasraja.github.io" here so staging traffic stops mixing into the
+    # real numbers. Matching is on the end of the hostname.
+    "analytics_exclude_hosts": ["localhost", "127.0.0.1", ""],
 }
 
 # -- PLACEHOLDER CONTENT ------------------------------------------------------
@@ -989,11 +995,22 @@ def page(path, title, description, body, active="", schema=None, canonical=None)
             "      gtag('consent', 'update', { analytics_storage: 'granted' });\n"
             "    }\n"
             "  } catch (e) {}\n"
+            "  var npsHost = location.hostname;\n"
+            "  var npsBlocked = %s.some(function (h) {\n"
+            "    return h === npsHost || (h && npsHost.slice(-h.length) === h);\n"
+            "  });\n"
             "  gtag('js', new Date());\n"
-            "  gtag('config', '%s', { content_group: '%s', anonymize_ip: true });\n"
+            "  if (!npsBlocked) {\n"
+            "    gtag('config', '%s', { content_group: '%s', anonymize_ip: true });\n"
+            "  }\n"
+            "  window.npsAnalyticsOff = npsBlocked;\n"
             "</script>\n"
-            "<script async src=\"https://www.googletagmanager.com/gtag/js?id=%s\"></script>"
-            % (ga_id, group, ga_id)
+            "<script>if (!window.npsAnalyticsOff) {\n"
+            "  var s = document.createElement('script'); s.async = true;\n"
+            "  s.src = 'https://www.googletagmanager.com/gtag/js?id=%s';\n"
+            "  document.head.appendChild(s);\n"
+            "}</script>"
+            % (json.dumps(SITE.get("analytics_exclude_hosts", [])), ga_id, group, ga_id)
         )
     schema_block = ""
     if schema:
