@@ -3,7 +3,6 @@
   <url><loc>https://nilaproservices.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://nilaproservices.com/services.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/industries.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nilaproservices.com/case-studies.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/insights.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -17,9 +16,6 @@
   <url><loc>https://nilaproservices.com/services/ai-governance.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/services/security-operations.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/services/third-party-risk.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nilaproservices.com/case-studies/saas-soc2-enterprise-deals.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nilaproservices.com/case-studies/manufacturer-cmmc-level-2.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nilaproservices.com/case-studies/health-system-incident-readiness.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/insights/compliance-automation-is-not-a-program.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/insights/ai-governance-that-does-not-block-shipping.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/insights/questions-a-board-should-ask.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

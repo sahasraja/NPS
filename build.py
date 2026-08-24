@@ -45,6 +45,11 @@ SITE = {
     # fabricated case studies. Set to False on the day you launch, and rerun
     # `python3 build.py`.
     "preview_mode": True,
+
+    # Case studies are written but hidden. The content stays in CASE_STUDIES
+    # below; flip this to True to bring back the nav link, the footer link,
+    # the home page section and the individual pages.
+    "show_case_studies": False,
 }
 
 # -- PLACEHOLDER CONTENT ------------------------------------------------------
@@ -822,6 +827,8 @@ def nav_menu():
 def header_html(active):
     def cls(key):
         return ' is-active' if active == key else ''
+    cases_nav = ('      <a class="nav-link%s" href="/case-studies.html">Case Studies</a>\n' % cls('cases')
+                 if SITE.get("show_case_studies") else '')
     return f"""<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap header-inner">
@@ -839,8 +846,7 @@ def header_html(active):
         <div class="menu">{nav_menu()}</div>
       </div>
       <a class="nav-link{cls('industries')}" href="/industries.html">Industries</a>
-      <a class="nav-link{cls('cases')}" href="/case-studies.html">Case Studies</a>
-      <a class="nav-link{cls('insights')}" href="/insights.html">Insights</a>
+{cases_nav}      <a class="nav-link{cls('insights')}" href="/insights.html">Insights</a>
       <a class="nav-link{cls('about')}" href="/about.html">About</a>
       <a class="btn btn-primary btn-sm header-cta" href="{SITE['booking_url']}" rel="noopener">Book a call</a>
     </nav>
@@ -849,6 +855,8 @@ def header_html(active):
 
 
 def footer_html():
+    cases_foot = ('          <li><a href="/case-studies.html">Case studies</a></li>\n'
+                  if SITE.get("show_case_studies") else '')
     svc_links = "".join(
         '<li><a href="/services/%s.html">%s</a></li>' % (s["slug"], s["title"]) for s in SERVICES[:6]
     )
@@ -877,8 +885,7 @@ def footer_html():
         <ul>
           <li><a href="/about.html">About</a></li>
           <li><a href="/industries.html">Industries</a></li>
-          <li><a href="/case-studies.html">Case studies</a></li>
-          <li><a href="/insights.html">Insights</a></li>
+{cases_foot}          <li><a href="/insights.html">Insights</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
       </div>
@@ -996,6 +1003,12 @@ def page(path, title, description, body, active="", schema=None, canonical=None)
 </body>
 </html>
 """
+    # Every booking link opens in a new tab so visitors do not lose the site.
+    doc = re.sub(
+        r'<a ([^>]*?)href="(https://outlook\.office\.com/bookwithme[^"]*)"([^>]*)>',
+        lambda m: '<a %shref="%s"%s target="_blank" rel="noopener noreferrer">'
+                  % (m.group(1), m.group(2), m.group(3).replace(' rel="noopener"', '')),
+        doc)
     doc = relativise(doc, path.count("/"))
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
@@ -1081,6 +1094,15 @@ def build_home():
         '<div class="dtile"><span class="code">%s</span><span><b>%s</b><span>%s</span></span></div>'
         % (code, name, desc) for code, name, desc in DOMAINS
     )
+    cases_section = ""
+    if SITE.get("show_case_studies"):
+        cases_section = (
+            '<section class="section"><div class="wrap">'
+            '<div class="section-head"><span class="eyebrow">Selected work</span>'
+            '<h2>What the work actually looks like.</h2>'
+            '<p>Three engagements, described the way we would describe them to you on a call.</p>'
+            '</div><div class="grid grid-3">' + cases + '</div></div></section>'
+        )
     framework_chips = "".join(
         '<span class="chip">%s%s</span>' % (icon("check", "tick"), f)
         for f in ["NIST CSF 2.0", "ISO/IEC 27001", "SOC 2", "HIPAA / HITRUST", "CMMC 2.0",
@@ -1242,16 +1264,7 @@ def build_home():
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Selected work</span>
-      <h2>What the work actually looks like.</h2>
-      <p>Three engagements, described the way we would describe them to you on a call.</p>
-    </div>
-    <div class="grid grid-3">{cases}</div>
-  </div>
-</section>
+{cases_section}
 
 <!-- PLACEHOLDER: testimonials below are illustrative. Replace with approved quotes. -->
 <section class="section section--alt">
@@ -1353,7 +1366,7 @@ def build_services_index():
 {cta_band(head="Not sure which one you need?",
           body="That is a normal place to start. Describe the situation and we will tell you which "
                "of these fits, or that none of them do yet.",
-          secondary=("See case studies", "/case-studies.html"))}
+          secondary=("See our insights", "/insights.html"))}
 """
     page("services.html",
          "Cybersecurity Services, vCISO, Compliance, Architecture | NPS",
@@ -1509,6 +1522,8 @@ def build_industries():
 
 
 def build_case_studies():
+    if not SITE.get("show_case_studies"):
+        return
     cards = "".join(
         f"""<a class="card card--edge" href="/case-studies/{c['slug']}.html">
           <span class="tag">{c['tag']}</span>
@@ -1982,10 +1997,13 @@ def build_legal():
 
 
 def build_seo_assets():
-    urls = ["/", "/services.html", "/industries.html", "/case-studies.html", "/insights.html",
+    urls = ["/", "/services.html", "/industries.html", "/insights.html",
             "/about.html", "/contact.html", "/privacy.html", "/terms.html"]
+    if SITE.get("show_case_studies"):
+        urls.insert(3, "/case-studies.html")
     urls += ["/services/%s.html" % s["slug"] for s in SERVICES]
-    urls += ["/case-studies/%s.html" % c["slug"] for c in CASE_STUDIES]
+    if SITE.get("show_case_studies"):
+        urls += ["/case-studies/%s.html" % c["slug"] for c in CASE_STUDIES]
     urls += ["/insights/%s.html" % a["slug"] for a in INSIGHTS]
 
     entries = "\n".join(
@@ -2018,6 +2036,12 @@ def main():
         p = os.path.join(ROOT, d)
         if os.path.isdir(p):
             shutil.rmtree(p)
+    # Remove pages that a feature flag has turned off, so a stale file from a
+    # previous build cannot stay live and reachable by direct URL.
+    if not SITE.get("show_case_studies"):
+        stale = os.path.join(ROOT, "case-studies.html")
+        if os.path.exists(stale):
+            os.remove(stale)
     build_home()
     build_services_index()
     build_service_pages()

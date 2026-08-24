@@ -289,6 +289,16 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
 .nav-link .chev { width: 12px; height: 12px; opacity: .6; transition: transform .2s ease; }
 
 .has-menu { position: relative; }
+/* An invisible bridge across the gap between the trigger and the panel.
+   Without it the pointer leaves .has-menu on the way down and the menu closes. */
+.has-menu::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 18px;
+}
 .has-menu:hover .nav-link .chev, .has-menu:focus-within .nav-link .chev { transform: rotate(180deg); }
 
 .menu {
@@ -308,11 +318,12 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  transition: opacity .18s ease .12s, transform .18s ease .12s, visibility .18s .12s;
 }
 .has-menu:hover .menu, .has-menu:focus-within .menu {
   opacity: 1; visibility: visible; pointer-events: auto;
   transform: translateX(-50%) translateY(0);
+  transition-delay: 0s;
 }
 .menu-item { display: flex; gap: 11px; padding: 11px 12px; border-radius: var(--radius-sm); transition: background .15s ease; }
 .menu-item:hover { background: rgba(255,255,255,0.05); }
@@ -362,6 +373,7 @@ body.nav-open .nav-toggle .ico-open { display: none; }
   body.nav-open .nav { opacity: 1; visibility: visible; transform: none; }
   .nav-link { padding: 14px 12px; font-size: 1rem; border-radius: 10px; }
   .has-menu { position: static; }
+  .has-menu::after { display: none; }
   .menu {
     position: static;
     transform: none;
