@@ -474,11 +474,12 @@ body.nav-open .nav-toggle .ico-open { display: none; }
 .bar { grid-column: 1 / -1; height: 4px; border-radius: 999px; background: rgba(255,255,255,0.07); overflow: hidden; }
 .bar > i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
 
-/* ---------- Logo / trust strip ---------- */
+/* ---------- Logo / trust strip (scrolling marquee) ---------- */
 .trust {
   border-block: 1px solid var(--line);
   padding: 26px 0;
   background: var(--bg-2);
+  overflow: hidden;
 }
 .trust-label {
   font-family: var(--font-mono);
@@ -487,24 +488,40 @@ body.nav-open .nav-toggle .ico-open { display: none; }
   text-transform: uppercase;
   color: var(--text-3);
   text-align: center;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
-.trust-row {
+.trust-marquee {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.trust-track {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 14px 34px;
+  width: max-content;
+  animation: marquee 38s linear infinite;
 }
-.trust-row span {
+.trust-marquee:hover .trust-track { animation-play-state: paused; }
+.trust-set { display: flex; align-items: center; }
+.trust-set span {
+  padding-inline: clamp(22px, 3vw, 42px);
+  white-space: nowrap;
   font-family: var(--font-head);
-  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-size: clamp(1rem, 1.5vw, 1.22rem);
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--text-3);
   transition: color .2s ease;
 }
-.trust-row span:hover { color: var(--text); }
+.trust-set span:hover { color: var(--text); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-marquee { mask-image: none; -webkit-mask-image: none; }
+  .trust-track { animation: none; width: 100%; justify-content: center; }
+  .trust-set { flex-wrap: wrap; justify-content: center; gap: 8px 0; }
+  .trust-set[aria-hidden="true"] { display: none; }
+}
 
 /* ---------- Cards ---------- */
 .card {

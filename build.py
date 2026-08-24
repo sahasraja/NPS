@@ -55,7 +55,8 @@ METRICS = [  # TODO: replace with verified figures
     ("100<em>%</em>", "Engagements led by a senior practitioner, never handed to juniors"),
 ]
 
-CLIENT_LOGOS = ["Infosys", "HCL", "GalaxE", "Cybersecon", "HiQuest"]  # TODO: confirm permission to name
+CLIENT_LOGOS = ["Revalgo.AI", "Engaiz", "Morphis Inc", "BD Emerson", "Excelencia",
+                "Katpro", "99yards", "Cloudcreek", "1Trooper"]  # TODO: confirm permission to name each
 
 TESTIMONIALS = [  # TODO: replace with real, attributable quotes (get written approval)
     (
@@ -1123,7 +1124,12 @@ def build_home():
 <section class="trust">
   <div class="wrap">
     <div class="trust-label">Trusted by teams at</div>
-    <div class="trust-row">{logos}</div>
+  </div>
+  <div class="trust-marquee">
+    <div class="trust-track">
+      <div class="trust-set">{logos}</div>
+      <div class="trust-set" aria-hidden="true">{logos}</div>
+    </div>
   </div>
 </section>
 
