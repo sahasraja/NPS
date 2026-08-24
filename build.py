@@ -111,6 +111,8 @@ ICONS = {
     "phone": _svg('<path d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/>'),
     "pin": _svg('<path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/>'),
     "clock": _svg('<circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/>'),
+    "calendar": _svg('<rect x="3.5" y="5" width="17" height="15" rx="2.5"/>'
+                     '<path d="M3.5 10h17M8 3.5v3M16 3.5v3"/><path d="m9.5 14.5 1.6 1.6 3.4-3.4"/>'),
     "linkedin": _svg('<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10.5V17M7.5 7.4v.1M11.5 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"/>'),
     "github": _svg('<path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.5 6.1-6.6a5.1 5.1 0 0 0-1.4-3.5 4.8 4.8 0 0 0-.1-3.6s-1.1-.3-3.7 1.4a12.6 12.6 0 0 0-6.6 0C5.8 1 4.7 1.3 4.7 1.3a4.8 4.8 0 0 0-.1 3.6A5.1 5.1 0 0 0 3.2 8.4c0 5.1 3.1 6.3 6.1 6.6a3.4 3.4 0 0 0-.9 2.6V21"/>'),
     "lock": _svg('<rect x="4.5" y="10" width="15" height="10.5" rx="2"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/>'),
@@ -1863,7 +1865,7 @@ def build_contact():
         <div class="card" style="padding:30px">
           <h3 style="margin-bottom:22px">Reach us directly</h3>
           <div class="info-list">
-            <div class="info-item"><span class="ico">{icon('clock')}</span>
+            <div class="info-item"><span class="ico">{icon('calendar')}</span>
               <div><b>Book directly</b><a href="{SITE['booking_url']}" rel="noopener">30 minutes with Raj Kumar</a></div></div>
             <div class="info-item"><span class="ico">{icon('mail')}</span>
               <div><b>Email</b><a href="mailto:{SITE['email']}">{SITE['email']}</a></div></div>
@@ -1874,14 +1876,14 @@ def build_contact():
           </div>
         </div>
 
-        <div class="card" style="padding:30px;margin-top:22px;border-color:var(--accent-line)">
+        <div class="card card--alert" style="padding:30px;margin-top:22px">
           <div class="card-ico">{icon('radar')}</div>
           <h3>Active incident?</h3>
           <p>If you are dealing with a live security incident, email us with
           <strong>INCIDENT</strong> in the subject line. Those go straight to a senior
           practitioner rather than into the normal queue.</p>
           <div class="card-foot">
-            <a class="btn btn-primary btn-block"
+            <a class="btn btn-alert btn-block"
                href="mailto:{SITE['email']}?subject=INCIDENT%20-%20urgent%20security%20support">
               Email the incident line</a>
           </div>

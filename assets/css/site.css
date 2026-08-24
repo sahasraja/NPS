@@ -56,6 +56,12 @@
   --accent-line: rgba(61, 180, 242, 0.32);
   --warn:        #FBBF24;
 
+  /* Alert. Used only where something is genuinely urgent, never as decoration.
+     Today that means one card: the active-incident path on the contact page. */
+  --alert:       #FF5A6E;
+  --alert-dim:   rgba(255, 90, 110, 0.10);
+  --alert-line:  rgba(255, 90, 110, 0.38);
+
   /* Type */
   --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-head: "Bricolage Grotesque", var(--font-sans);
@@ -1119,3 +1125,25 @@ td:first-child { color: var(--text); font-weight: 500; }
   color: var(--accent);
 }
 .dtile--note p { font-size: 0.85rem; color: var(--text-2); margin: 0; }
+
+
+/* ---------- Alert card: the one place red is allowed ---------- */
+.card--alert {
+  border-color: var(--alert-line);
+  background: linear-gradient(155deg, rgba(255,90,110,.055), var(--surface) 62%);
+}
+.card--alert .card-ico {
+  background: var(--alert-dim);
+  border-color: var(--alert-line);
+  color: var(--alert);
+}
+.card--alert h3 { color: #fff; }
+.btn-alert {
+  background: var(--alert);
+  color: #16050A;
+  box-shadow: 0 10px 30px -12px rgba(255, 90, 110, 0.55);
+}
+.btn-alert:hover {
+  background: #FF7280;
+  box-shadow: 0 16px 40px -14px rgba(255, 90, 110, 0.7);
+}
