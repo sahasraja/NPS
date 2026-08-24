@@ -410,12 +410,13 @@ SERVICES = [
     {
         "slug": "third-party-risk",
         "icon": "handshake",
-        "title": "Third-Party &amp; M&amp;A Due Diligence",
-        "short": "Risk you inherit from others",
-        "menu_desc": "Vendor risk programs and transaction security diligence.",
-        "summary": "A vendor risk program that scales past a spreadsheet, and technical security "
-                   "diligence for acquisitions, so you find out what you're buying before the "
-                   "wire clears, not after integration.",
+        "title": "Third-Party &amp; M&amp;A Security Due Diligence",
+        "short": "Security risk you inherit",
+        "menu_desc": "Vendor security programs and cyber diligence on deals.",
+        "summary": "This is the security half of diligence, not the financial, tax or "
+                   "commercial half. A vendor security program that scales past a spreadsheet, "
+                   "and cyber due diligence on acquisitions, so you find out what you are "
+                   "buying before the wire clears rather than after integration.",
         "problem_head": "Most of your risk now sits on someone else's infrastructure",
         "problem": [
             "Vendor reviews are a questionnaire nobody reads, filed by nobody in particular.",
@@ -431,6 +432,7 @@ SERVICES = [
             "Quantify remediation cost and integration risk as a deal input",
             "Plan post-close integration: identity merge, network join, control harmonisation",
             "Support divestiture and carve-out separation without leaving doors open",
+            "Work alongside your financial, tax and legal diligence teams, covering the security scope only",
         ],
         "deliverables": [
             ("Vendor risk program", "Tiering model, assessment workflow, SLAs and the reassessment calendar"),
@@ -442,7 +444,7 @@ SERVICES = [
         ],
         "engagements": [
             ("TPRM program build", "4–8 weeks", "Program design, tooling and first wave of assessments."),
-            ("Deal diligence", "1–3 weeks", "Fast, focused technical security review inside the deal clock."),
+            ("Deal diligence", "1–3 weeks", "A focused cyber review delivered inside the timetable the deal sets."),
             ("Integration support", "3–6 months", "Post-close security integration run alongside your team."),
         ],
     },
