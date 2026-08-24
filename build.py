@@ -26,7 +26,10 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 
 SITE = {
     "name": "NPS",
-    "legal_name": "Nila Pro Services",
+    "legal_name": "NPS",
+    # The registered entity name is deliberately not used in marketing copy.
+    # Privacy and Terms name it once each, which counsel will normally want.
+    "legal_entity": "Nila Pro Services",
     "domain": "https://nilaproservices.com",
     "tagline": "Security advisory for companies that can't afford to guess.",
     "email": "info@nilaproservices.com",
@@ -175,7 +178,7 @@ SERVICES = [
         "icon": "compass",
         "title": "Cyber Risk &amp; Security Strategy",
         "short": "Know what actually matters",
-        "menu_desc": "Assess, prioritise and sequence, in business terms.",
+        "menu_desc": "Assess, prioritize and sequence, in business terms.",
         "summary": "An honest read of where you stand, what could actually hurt you, and the "
                    "shortest sequence of work that reduces the most risk. Written for executives, "
                    "detailed enough for engineers.",
@@ -193,7 +196,7 @@ SERVICES = [
             "Sequence remediation by risk reduced per dollar and per engineering week",
             "Produce a costed multi-year roadmap tied to your budget and hiring plan",
             "Define the metrics that prove the program is working",
-            "Rationalise an overlapping security tool stack and cut what isn't earning its keep",
+            "Rationalize an overlapping security tool stack and cut what isn't earning its keep",
         ],
         "deliverables": [
             ("Current-state assessment", "Capability maturity by domain, with the evidence behind every score"),
@@ -205,7 +208,7 @@ SERVICES = [
         ],
         "engagements": [
             ("Rapid diagnostic", "2–3 weeks", "Fast, focused read on posture with a top-ten action list."),
-            ("Full assessment", "4–8 weeks", "Framework-based assessment, scenario modelling and costed roadmap."),
+            ("Full assessment", "4–8 weeks", "Framework-based assessment, scenario modeling and costed roadmap."),
             ("Strategy retainer", "Ongoing", "Quarterly reassessment and roadmap stewardship as the business changes."),
         ],
     },
@@ -308,7 +311,7 @@ SERVICES = [
         ],
         "does": [
             "Threat model the architecture and the features that carry the most risk (STRIDE / PASTA)",
-            "Review multi-tenant isolation and authorisation logic, the failure mode that ends companies",
+            "Review multi-tenant isolation and authorization logic, the failure mode that ends companies",
             "Design a secure SDLC with gates that fit your release cadence, not against it",
             "Stand up SAST, DAST, SCA and secrets scanning tuned to a signal-to-noise ratio engineers accept",
             "Build supply chain controls: dependency policy, SBOM, artifact signing, build integrity",
@@ -325,7 +328,7 @@ SERVICES = [
             ("Buyer trust package", "Architecture overview, data flow, control narrative and questionnaire answers"),
         ],
         "engagements": [
-            ("Threat model sprint", "1–3 weeks", "One product or one critical feature, modelled and ranked."),
+            ("Threat model sprint", "1–3 weeks", "One product or one critical feature, modeled and ranked."),
             ("AppSec program build", "8–16 weeks", "SDLC, tooling, training and pen test program stood up."),
             ("Embedded AppSec", "Ongoing", "Design reviews, triage and engineer coaching on a standing basis."),
         ],
@@ -431,7 +434,7 @@ SERVICES = [
             "Map concentration and fourth-party dependency risk",
             "Perform pre-close security due diligence on acquisition targets",
             "Quantify remediation cost and integration risk as a deal input",
-            "Plan post-close integration: identity merge, network join, control harmonisation",
+            "Plan post-close integration: identity merge, network join, control harmonization",
             "Support divestiture and carve-out separation without leaving doors open",
             "Work alongside your financial, tax and legal diligence teams, covering the security scope only",
         ],
@@ -583,7 +586,7 @@ CASE_STUDIES = [
                   "third-party dependency map nobody had drawn.",
         "facts": [("Sector", "Healthcare provider"), ("Size", "Multi-site, ~2,000 staff"),
                   ("Engagement", "4 months"), ("Scope", "IR readiness, TPRM, detection coverage")],
-        "challenge": "A peer organisation in the region had been down for eleven days after a "
+        "challenge": "A peer organization in the region had been down for eleven days after a "
                      "ransomware event. The board asked a direct question. Could that happen "
                      "to us, and what would we do? The honest answer was that nobody knew. "
                      "The IR plan predated the current EHR platform.",
@@ -616,7 +619,7 @@ INSIGHTS = [
         "slug": "compliance-automation-is-not-a-program",
         "tag": "Compliance",
         "date": "2026-07-14",
-        "date_display": "14 July 2026",
+        "date_display": "July 14, 2026",
         "read": "6 min read",
         "title": "Your compliance automation platform is a scoreboard, not a team",
         "teaser": "Vanta and Drata are genuinely good products. They also cannot design a control, "
@@ -666,7 +669,7 @@ INSIGHTS = [
         "slug": "ai-governance-that-does-not-block-shipping",
         "tag": "AI Governance",
         "date": "2026-06-23",
-        "date_display": "23 June 2026",
+        "date_display": "June 23, 2026",
         "read": "7 min read",
         "title": "AI governance that doesn't turn into a permission queue",
         "teaser": "Most AI governance frameworks fail the same way: every use case gets the same "
@@ -711,7 +714,7 @@ INSIGHTS = [
         "slug": "questions-a-board-should-ask",
         "tag": "Security Leadership",
         "date": "2026-05-19",
-        "date_display": "19 May 2026",
+        "date_display": "May 19, 2026",
         "read": "5 min read",
         "title": "Six questions a board should ask, and what a good answer sounds like",
         "teaser": "“Are we secure?” is unanswerable and everyone in the room knows it. "
@@ -728,7 +731,7 @@ INSIGHTS = [
                   "categories such as ransomware, insider or nation-state, without connecting any of "
                   "them to your business."),
             ("h2", "2. Which risks have we deliberately accepted?"),
-            ("p", "Every organisation accepts risk. A healthy program has a written, dated, owned list "
+            ("p", "Every organization accepts risk. A healthy program has a written, dated, owned list "
                   "of accepted risks reviewed on a schedule. If the answer is “none,” the "
                   "acceptance is happening informally, which means nobody senior has actually agreed "
                   "to it."),
@@ -742,15 +745,15 @@ INSIGHTS = [
                   "deployed."),
             ("h2", "5. Which third parties could take us down?"),
             ("p", "Expect a short, ranked list with the dependency named, and ideally an answer "
-                  "about fourth parties too. Most organisations discover their concentration risk "
+                  "about fourth parties too. Most organizations discover their concentration risk "
                   "during someone else's outage."),
             ("h2", "6. What would you fix if I gave you unbudgeted money tomorrow?"),
             ("p", "The most revealing question of the six. If the answer is immediate and specific, "
-                  "there is a real prioritised plan behind it. If it takes a week to produce, the "
-                  "prioritisation does not exist yet."),
+                  "there is a real prioritized plan behind it. If it takes a week to produce, the "
+                  "prioritization does not exist yet."),
             ("h2", "The meta-question"),
             ("p", "Notice that none of these ask for a maturity score, a framework percentage or a "
-                  "colour. Those are useful internal instruments and poor governance instruments. "
+                  "color. Those are useful internal instruments and poor governance instruments. "
                   "Boards govern by understanding consequence, ownership and trade-off, and "
                   "security is not special in that respect."),
         ],
@@ -799,7 +802,7 @@ FAQS = [
 LOGO_IMG = (
     '<img class="brand-mark" src="/assets/img/logo.png" '
     'srcset="/assets/img/logo.png 1x, /assets/img/logo@2x.png 2x, /assets/img/logo@3x.png 3x" '
-    'width="123" height="76" alt="NPS, Nila Pro Services" decoding="async">'
+    'width="123" height="76" alt="NPS" decoding="async">'
 )
 
 
@@ -856,8 +859,8 @@ def footer_html():
           <span class="brand-rule" aria-hidden="true"></span>
           <span class="brand-sub">Security<br>Advisory</span>
         </a>
-        <p style="margin-top:16px">{SITE['legal_name']}, senior cybersecurity advisory,
-        compliance and security engineering for organisations that are held to a standard.</p>
+        <p style="margin-top:16px">Senior cybersecurity advisory, compliance and security
+        engineering for organizations that are held to a standard.</p>
         <div class="social">
           <a href="{SITE['linkedin']}" aria-label="LinkedIn" rel="noopener">{icon('linkedin')}</a>
           <a href="mailto:{SITE['email']}" aria-label="Email">{icon('mail')}</a>
@@ -966,7 +969,7 @@ def page(path, title, description, body, active="", schema=None, canonical=None)
 {robots_meta}
 <link rel="canonical" href="{canon}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="{SITE['name']}, {SITE['legal_name']}">
+<meta property="og:site_name" content="{SITE['name']} Security Advisory">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:url" content="{canon}">
@@ -1120,7 +1123,7 @@ def build_home():
   </div>
 </section>
 
-<!-- PLACEHOLDER: confirm you have permission to name these organisations -->
+<!-- PLACEHOLDER: confirm you have permission to name these organizations -->
 <section class="trust">
   <div class="wrap">
     <div class="trust-label">Trusted by teams at</div>
@@ -1291,7 +1294,7 @@ def build_home():
         "serviceType": [s["title"].replace("&amp;", "&") for s in SERVICES],
     }
     page("index.html",
-         "NPS, Cybersecurity Advisory, vCISO &amp; Compliance | Nila Pro Services",
+         "Cybersecurity Advisory, vCISO &amp; Compliance | NPS",
          "Senior cybersecurity advisory: virtual CISO, risk strategy, SOC 2 / ISO 27001 / HIPAA / "
          "CMMC compliance, security architecture, AppSec, AI governance and incident readiness.",
          body, active="home", schema=schema)
@@ -1453,7 +1456,7 @@ def build_service_pages():
 """
         clean_title = s["title"].replace("&amp;", "&")
         page("services/%s.html" % s["slug"],
-             "%s | NPS Security Advisory" % clean_title,
+             "%s | NPS" % clean_title,
              html.escape(s["summary"].replace("&amp;", "&").replace(", ", "-"))[:300],
              body, active="services")
 
@@ -1486,7 +1489,7 @@ def build_industries():
   <div class="wrap wrap-narrow center">
     <span class="eyebrow">Not on the list?</span>
     <h2>The pattern travels further than the vertical does.</h2>
-    <p class="lede">If your organisation holds data somebody else cares about, depends on systems
+    <p class="lede">If your organization holds data somebody else cares about, depends on systems
     that cannot go down, or has to prove its controls to a third party, the work looks broadly
     similar. Tell us the specifics and we will tell you honestly whether we are the right firm.</p>
     <div class="btn-row" style="margin-top:28px">
@@ -1497,9 +1500,9 @@ def build_industries():
 
 {cta_band()}
 """
-    page("industries.html", "Industries We Serve | NPS Security Advisory",
+    page("industries.html", "Industries We Serve | NPS",
          "Cybersecurity advisory for healthcare, financial services, SaaS, government and defense, "
-         "manufacturing, legal, energy, education, retail and nonprofit organisations.",
+         "manufacturing, legal, energy, education, retail and nonprofit organizations.",
          body, active="industries")
 
 
@@ -1529,7 +1532,7 @@ def build_case_studies():
                "and roughly what it takes.",
           secondary=("See our services", "/services.html"))}
 """
-    page("case-studies.html", "Case Studies | NPS Security Advisory",
+    page("case-studies.html", "Case Studies | NPS",
          "Real cybersecurity engagements: SOC 2 certification for a SaaS platform, CMMC Level 2 "
          "readiness for a defense manufacturer, and incident response readiness for a health system.",
          body, active="cases")
@@ -1618,12 +1621,12 @@ def build_insights():
   </div>
 </section>
 
-{cta_band(head="Want this applied to your organisation?",
+{cta_band(head="Want this applied to your organization?",
           body="Reading about it is the cheap part. Book thirty minutes and we will tell you which "
                "of it actually applies to you.",
           secondary=("See our services", "/services.html"))}
 """
-    page("insights.html", "Insights | NPS Security Advisory",
+    page("insights.html", "Insights | NPS",
          "Practical writing on compliance programs, AI governance, board reporting and security "
          "leadership from the NPS advisory team.",
          body, active="insights")
@@ -1711,8 +1714,8 @@ def build_about():
     body = f"""
 {page_hero([("Home", "/"), ("About", None)], "About NPS",
            "A security practice, not a staffing desk.",
-           "NPS, Nila Pro Services, is a cybersecurity advisory firm. We work with "
-           "organisations that are accountable to somebody: a regulator, a prime contractor, an "
+           "NPS is a cybersecurity advisory firm. We work with "
+           "organizations that are accountable to somebody: a regulator, a prime contractor, an "
            "insurer, or the enterprise customer whose security review is holding up the contract.")}
 
 <section class="section">
@@ -1735,7 +1738,7 @@ def build_about():
       </div>
       <div class="readout reveal">
         <div class="readout-head"><span>At a glance</span><span class="dot"></span></div>
-        <div class="readout-row"><span class="label">Founded</span><span class="value">Nila Pro Services</span></div>
+        <div class="readout-row"><span class="label">Practice</span><span class="value">Security advisory</span></div>
         <div class="readout-row"><span class="label">Based</span><span class="value">New Jersey, USA</span></div>
         <div class="readout-row"><span class="label">Practice areas</span><span class="value">8</span></div>
         <div class="readout-row"><span class="label">Delivery</span><span class="value">Senior-led, always</span></div>
@@ -1784,9 +1787,9 @@ def build_about():
 
 {cta_band()}
 """
-    page("about.html", "About NPS, Nila Pro Services Security Advisory",
+    page("about.html", "About NPS | Security Advisory Practice",
          "NPS is a senior-led cybersecurity advisory firm based in New Jersey, serving regulated "
-         "and audited organisations across the United States.",
+         "and audited organizations across the United States.",
          body, active="about")
 
 
@@ -1805,7 +1808,7 @@ def build_contact():
       <div>
         <h2 style="margin-top:0">Send us a note</h2>
         <p class="lede" style="margin-bottom:30px">We reply to every message from a real
-        organisation within one business day.</p>
+        organization within one business day.</p>
         <form class="form" data-contact method="POST" action="{SITE['form_action']}">
           <div class="field-row">
             <div class="field">
@@ -1814,7 +1817,7 @@ def build_contact():
             </div>
             <div class="field">
               <label for="company">Company <span class="req">*</span></label>
-              <input id="company" name="company" type="text" required autocomplete="organization" placeholder="Organisation">
+              <input id="company" name="company" type="text" required autocomplete="organization" placeholder="Organization">
             </div>
           </div>
           <div class="field-row">
@@ -1867,7 +1870,7 @@ def build_contact():
             <div class="info-item"><span class="ico">{icon('pin')}</span>
               <div><b>Office</b><span>{SITE['address_1']}<br>{SITE['address_2']}</span></div></div>
             <div class="info-item"><span class="ico">{icon('clock')}</span>
-              <div><b>Hours</b><span>Mon–Fri, 9:00–18:00 ET</span></div></div>
+              <div><b>Hours</b><span>Monday to Friday, 9:00 AM to 6:00 PM ET</span></div></div>
           </div>
         </div>
 
@@ -1888,7 +1891,7 @@ def build_contact():
   </div>
 </section>
 """
-    page("contact.html", "Contact NPS, Cybersecurity Advisory | Nila Pro Services",
+    page("contact.html", "Contact NPS | Cybersecurity Advisory",
          "Get in touch with NPS for cybersecurity advisory, vCISO services, compliance programs and "
          "incident readiness. Based in South Amboy, New Jersey.",
          body, active="contact")
@@ -1897,13 +1900,13 @@ def build_contact():
 def build_legal():
     privacy = f"""
 {page_hero([("Home", "/"), ("Privacy", None)], "Legal", "Privacy Policy",
-           "How {name} handles the information you share with us.".format(name=SITE['legal_name']),
+           "How NPS handles the information you share with us.".format(),
            buttons=False)}
 <section class="section"><div class="wrap"><article class="prose">
-  <p><em>Last updated: 5 August 2026. This is a starting template, have counsel review it
+  <p><em>Last updated: August 5, 2026. This is a starting template, have counsel review it
   before launch.</em></p>
   <h2>What we collect</h2>
-  <p>When you submit our contact form we collect the name, organisation, email address, phone number
+  <p>When you submit our contact form we collect the name, organization, email address, phone number
   and message you provide. We collect standard web server logs, including IP address and user agent,
   for security and reliability purposes.</p>
   <h2>How we use it</h2>
@@ -1924,38 +1927,38 @@ def build_legal():
   <p>Information obtained during a client engagement is governed by the engagement agreement and
   applicable non-disclosure terms, which take precedence over this policy.</p>
   <h2>Contact</h2>
-  <p>{SITE['legal_name']}, {SITE['address_1']}, {SITE['address_2']}.
+  <p>{SITE['legal_entity']} (NPS), {SITE['address_1']}, {SITE['address_2']}.
   <a href="mailto:{SITE['email']}">{SITE['email']}</a></p>
 </article></div></section>
 """
-    page("privacy.html", "Privacy Policy | NPS", "How Nila Pro Services handles personal information.",
+    page("privacy.html", "Privacy Policy | NPS", "How NPS handles personal information.",
          privacy)
 
     terms = f"""
 {page_hero([("Home", "/"), ("Terms", None)], "Legal", "Terms of Use",
            "The terms that apply to your use of this website.", buttons=False)}
 <section class="section"><div class="wrap"><article class="prose">
-  <p><em>Last updated: 5 August 2026. This is a starting template, have counsel review it
+  <p><em>Last updated: August 5, 2026. This is a starting template, have counsel review it
   before launch.</em></p>
   <h2>Website content</h2>
   <p>Content on this site is provided for general information. It does not constitute security,
   legal, regulatory or financial advice, and no client relationship is created by reading it or by
   contacting us through this site.</p>
   <h2>Intellectual property</h2>
-  <p>All content, design and materials on this site are the property of {SITE['legal_name']} unless
+  <p>All content, design and materials on this site are the property of {SITE['legal_entity']} unless
   otherwise stated, and may not be reproduced commercially without written permission.</p>
   <h2>Third-party links</h2>
   <p>We link to external resources for convenience. We do not control and are not responsible for
   their content or practices.</p>
   <h2>Limitation of liability</h2>
-  <p>To the fullest extent permitted by law, {SITE['legal_name']} is not liable for any loss arising
+  <p>To the fullest extent permitted by law, {SITE['legal_entity']} is not liable for any loss arising
   from reliance on information published on this site. Engagement-specific obligations are governed
   exclusively by the applicable signed agreement.</p>
   <h2>Governing law</h2>
   <p>These terms are governed by the laws of the State of New Jersey, United States.</p>
 </article></div></section>
 """
-    page("terms.html", "Terms of Use | NPS", "Terms governing use of the Nila Pro Services website.",
+    page("terms.html", "Terms of Use | NPS", "Terms governing use of the NPS website.",
          terms)
 
     notfound = f"""

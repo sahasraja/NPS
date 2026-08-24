@@ -81,7 +81,7 @@ not a reproduction.
 
 Also worth deciding: the logo has a **white** element (the three person glyphs) that
 only works on a dark or light background respectively. If you ever need it on white,
-you'll want a second colourway. Ask your designer for a light-background and a
+you'll want a second colorway. Ask your designer for a light-background and a
 dark-background version.
 
 ## 5. Nice to have before launch
