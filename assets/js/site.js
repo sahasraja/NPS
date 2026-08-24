@@ -112,6 +112,17 @@
       var choice = btn.getAttribute('data-consent');
       writeConsent(choice);
       window.gtag('consent', 'update', { analytics_storage: choice });
+      if (choice === 'granted') {
+        /* The initial page_view went out before consent, as a cookieless ping,
+           so the landing page is never attributed. Resend it now that storage
+           is allowed, otherwise every accepting visitor undercounts by one. */
+        window.gtag('event', 'page_view', {
+          page_location: location.href,
+          page_path: location.pathname,
+          page_title: document.title,
+          consent_state: 'granted_after_prompt'
+        });
+      }
       consent.hidden = true;
     });
   }
