@@ -22,7 +22,23 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin-wght-normal.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css">
-
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied',
+    ad_personalization: 'denied', analytics_storage: 'denied',
+    wait_for_update: 500
+  });
+  try {
+    if (localStorage.getItem('nps-analytics-consent') === 'granted') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  } catch (e) {}
+  gtag('js', new Date());
+  gtag('config', 'G-0TWWXMD13Z', { content_group: 'site', anonymize_ip: true });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0TWWXMD13Z"></script>
 
 </head>
 <body>
@@ -198,7 +214,13 @@
     </div>
   </div>
 </footer>
-
+<div class="consent" id="consent" hidden>
+  <p><b>Analytics only.</b> We use Google Analytics to see which pages get read and where visitors come from. No advertising, no profiling, no data sold. Decline and nothing is stored.</p>
+  <div class="consent-actions">
+    <button class="btn btn-primary btn-sm" data-consent="granted">Accept</button>
+    <button class="btn btn-ghost btn-sm" data-consent="denied">Decline</button>
+  </div>
+</div>
 <script src="assets/js/site.js" defer></script>
 </body>
 </html>

@@ -55,7 +55,7 @@ SITE = {
     # Paste your GA4 Measurement ID here (Admin -> Data Streams -> Web -> it
     # looks like "G-XXXXXXXXXX"). Leave it empty and no analytics code is
     # emitted at all: no script tag, no cookie banner, no third-party request.
-    "ga_measurement_id": "",
+    "ga_measurement_id": "G-0TWWXMD13Z",
 }
 
 # -- PLACEHOLDER CONTENT ------------------------------------------------------

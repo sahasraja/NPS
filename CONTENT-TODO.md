@@ -91,11 +91,7 @@ dark-background version.
   This design deliberately uses none, which keeps it clean, but a single good
   photo of you on the About page would do more for conversion than anything else
   on this list.
-- **Analytics, wired and waiting for your ID.** Google Analytics 4 is built in
-  but switched off. Paste your Measurement ID into `SITE["ga_measurement_id"]`
-  in `build.py` (GA4 Admin, Data Streams, Web, it looks like `G-XXXXXXXXXX`),
-  rerun `python3 build.py`, and it goes live. Leave it empty and no analytics
-  code is emitted at all. Tracked out of the box: booking clicks with the CTA
+- **Analytics is live.** Google Analytics 4, property `G-0TWWXMD13Z`. Tracked: booking clicks with the CTA
   that produced them, contact form starts and submissions, read depth on
   service pages, and content grouping so service pages report as a set. GA4
   sets cookies, so a consent banner is included and analytics stays denied
