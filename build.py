@@ -78,7 +78,11 @@ METRICS = [  # TODO: replace with verified figures
 CLIENT_LOGOS = ["Revalgo.AI", "Engaiz", "Morphis Inc", "BD Emerson", "Excelencia",
                 "Katpro", "99yards", "Cloudcreek", "1Trooper"]  # TODO: confirm permission to name each
 
-TESTIMONIALS = [  # TODO: replace with real, attributable quotes (get written approval)
+# NOT PUBLISHED. The testimonials section was removed from the home page because
+# these quotes are invented. Collect two or three real ones (anonymized is fine:
+# "Director of IT, regional manufacturer"), replace these, and restore the
+# section in build_home().
+TESTIMONIALS = [
     (
         "They walked in during our worst week and made the next twelve months legible. "
         "No theater, no forty-slide deck, a ranked list of what actually mattered and who owned it.",
@@ -1136,12 +1140,6 @@ def build_home():
         </a>""" for s in SERVICES
     )
     logos = "".join("<span>%s</span>" % l for l in CLIENT_LOGOS)
-    quotes = "".join(
-        f"""<figure class="quote reveal"><div class="mark">&ldquo;</div>
-        <blockquote>{q}</blockquote>
-        <figcaption><b>{role}</b>{org}</figcaption></figure>"""
-        for q, role, org in TESTIMONIALS
-    )
     cases = "".join(
         f"""<a class="card card--edge" href="/case-studies/{c['slug']}.html">
           <span class="tag">{c['tag']}</span>
@@ -1328,17 +1326,6 @@ def build_home():
 </section>
 
 {cases_section}
-
-<!-- PLACEHOLDER: testimonials below are illustrative. Replace with approved quotes. -->
-<section class="section section--alt">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">In their words</span>
-      <h2>What clients say when we are not in the room.</h2>
-    </div>
-    <div class="grid grid-3">{quotes}</div>
-  </div>
-</section>
 
 <section class="section">
   <div class="wrap wrap-narrow">
