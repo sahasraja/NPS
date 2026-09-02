@@ -30,10 +30,14 @@ Each item below names the exact location in `build.py`. Edit there, run
 
 All in the `SITE` dict at the top of `build.py`:
 
-- `form_action`, currently `REPLACE_WITH_FORMSPREE_ENDPOINT`. Get a free
-  endpoint from [Formspree](https://formspree.io) or [Basin](https://usebasin.com),
-  or deploy on Netlify/Cloudflare Pages and use their built-in form handling.
-  Until this is set, the form shows a fallback message rather than failing silently.
+- `form_action` is now **FormSubmit**, relaying to `info@nilaproservices.com`.
+  **The first submission sends a confirmation email to info@ that must be clicked
+  once to activate the endpoint.** Do that before launch, or the first real enquiry
+  is lost. Worth knowing: FormSubmit is a free third party that will see the
+  contents of every enquiry. That is a reasonable trade for launch, but for a
+  security advisory firm it is worth moving to Cloudflare Pages Functions, a
+  Formspree paid plan with a DPA, or a small self-hosted handler once traffic
+  justifies it.
 - `booking_url`, **done.** Points at your Outlook Bookings page (30 minutes with
   Raj Kumar). Every "Book a call" button on the site reads from this one value.
 - `linkedin`, I guessed the company page URL. Confirm it.

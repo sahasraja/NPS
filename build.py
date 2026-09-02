@@ -35,9 +35,14 @@ SITE = {
     "email": "info@nilaproservices.com",
     "address_1": "924 US Highway 9, Suite 311",
     "address_2": "South Amboy, New Jersey 08879",
-    "linkedin": "https://www.linkedin.com/company/nila-pro-services/",   # TODO: confirm
+    "linkedin": "https://www.linkedin.com/company/nilapro/",
     "booking_url": ("https://outlook.office.com/bookwithme/user/0b69000b72af40f3869df745aac995f6@nilaproservices.com/meetingtype/fz1tXex6vUOMyihW7K7jKA2?anonymous&amp;ismsaljsauthenabled&amp;ep=mCardFromTile"),
-    "form_action": "REPLACE_WITH_FORMSPREE_ENDPOINT",                     # TODO: e.g. https://formspree.io/f/xxxxxx
+    # The contact form posts to FormSubmit, which relays the message to the
+    # address below. No account, no server. The FIRST submission triggers a
+    # confirmation email to info@ that must be clicked once to activate the
+    # endpoint; after that it just works. See CONTENT-TODO.md for the note on
+    # moving to a self-hosted or first-party handler later.
+    "form_action": "https://formsubmit.co/info@nilaproservices.com",
 
     # PREVIEW MODE, while the site still contains placeholder content, keep this
     # True. It adds <meta name="robots" content="noindex,nofollow"> to every page
@@ -75,7 +80,7 @@ METRICS = [  # TODO: replace with verified figures
     ("100<em>%</em>", "Engagements led by a senior practitioner, never handed to juniors"),
 ]
 
-CLIENT_LOGOS = ["Revalgo.AI", "Engaiz", "Morphis Inc", "BD Emerson", "Excelencia",
+CLIENT_LOGOS = ["Revalgo.AI", "Engaiz", "Morphis Inc", "Excelencia",
                 "Katpro", "99yards", "Cloudcreek", "1Trooper"]  # TODO: confirm permission to name each
 
 # NOT PUBLISHED. The testimonials section was removed from the home page because
@@ -813,9 +818,11 @@ FAQS = [
      "detections, sitting in the design review. Advice that stops at the recommendation is where most "
      "security money is wasted."),
     ("How do you charge?",
-     "Fixed fee for scoped projects like assessments and certification programs, and a monthly "
-     "retainer for ongoing work like fractional CISO or embedded architecture. No hourly billing "
-     "surprises, and the scope is written down before we start."),
+     "Three ways, chosen to fit the work. Fixed fee for scoped projects like assessments and "
+     "certification programs. A monthly retainer for ongoing work such as fractional CISO or "
+     "embedded architecture. And hourly for advisory support that is genuinely open-ended, where "
+     "pretending to know the scope in advance would only cost you money. Whichever applies, the "
+     "rate and the shape of the engagement are agreed in writing before we start."),
 ]
 
 # ============================================================================
@@ -1799,9 +1806,9 @@ def build_about():
         the person signing the cheque can evaluate.</p>
         <h2>What we are not</h2>
         <p>We are not a managed security service, and we will not pretend that monitoring is a
-        strategy. We are not a resale channel, we hold no vendor commissions, which is why we
-        can tell you that the tool you are about to buy will not fix the problem you have. And we
-        are not a body shop: every engagement is scoped to an outcome, not to a headcount.</p>
+        strategy. We are not a reseller dressed as an advisor, which is why we can tell you that
+        the tool you are about to buy will not fix the problem you have. And we are not a body
+        shop: every engagement is scoped to an outcome, not to a headcount.</p>
       </div>
       <div class="readout reveal">
         <div class="readout-head"><span>At a glance</span><span class="dot"></span></div>
@@ -1809,7 +1816,6 @@ def build_about():
         <div class="readout-row"><span class="label">Based</span><span class="value">New Jersey, USA</span></div>
         <div class="readout-row"><span class="label">Practice areas</span><span class="value">8</span></div>
         <div class="readout-row"><span class="label">Delivery</span><span class="value">Senior-led, always</span></div>
-        <div class="readout-row"><span class="label">Vendor commissions</span><span class="value">None</span></div>
         <div style="margin-top:22px">
           <a class="btn btn-primary btn-block" href="{SITE['booking_url']}">Book a call</a>
         </div>
@@ -1877,6 +1883,12 @@ def build_contact():
         <p class="lede" style="margin-bottom:30px">We reply to every message from a real
         organization within one business day.</p>
         <form class="form" data-contact method="POST" action="{SITE['form_action']}">
+          <input type="hidden" name="_subject" value="Website enquiry via nilaproservices.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="{SITE['domain']}/thank-you.html">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off"
+                 aria-hidden="true" class="visually-hidden">
           <div class="field-row">
             <div class="field">
               <label for="name">Name <span class="req">*</span></label>
@@ -1965,6 +1977,12 @@ def build_contact():
 
 
 def build_legal():
+    thanks_cards = "".join(
+        f'''<a class="card card--edge" href="/insights/{a['slug']}.html">
+          <span class="tag">{a['tag']}</span>
+          <h3 style="margin-top:14px">{a['title']}</h3>
+        </a>''' for a in INSIGHTS
+    )
     privacy = f"""
 {page_hero([("Home", "/"), ("Privacy", None)], "Legal", "Privacy Policy",
            "How NPS handles the information you share with us.".format(),
@@ -2027,6 +2045,35 @@ def build_legal():
 """
     page("terms.html", "Terms of Use | NPS", "Terms governing use of the NPS website.",
          terms)
+
+    thanks = f"""
+<section class="page-hero" style="padding-block:110px">
+  <div class="wrap wrap-narrow center">
+    <span class="eyebrow">Message received</span>
+    <h1>Thank you. We have it.</h1>
+    <p class="lede">Someone senior reads every enquiry that comes through this form, and you
+    will hear back within one business day. If what you sent is time sensitive, you can also
+    book a call directly and pick a slot that works.</p>
+    <div class="btn-row" style="margin-top:32px;justify-content:center">
+      <a class="btn btn-primary" data-cta="thank-you" href="{SITE['booking_url']}">Book a call {icon('arrow')}</a>
+      <a class="btn btn-ghost" href="/">Back to home</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap wrap-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">While you wait</span>
+      <h2>Some of what we think.</h2>
+    </div>
+    <div class="grid grid-3">{thanks_cards}</div>
+  </div>
+</section>
+"""
+    page("thank-you.html", "Thank you | NPS",
+         "Your message has been received. NPS replies to every enquiry within one business day.",
+         thanks)
 
     notfound = f"""
 <section class="page-hero" style="padding-block:120px">
