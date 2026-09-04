@@ -69,11 +69,13 @@ SITE = {
     "analytics_exclude_hosts": ["localhost", "127.0.0.1", "", "sahasraja.github.io"],
 }
 
-# -- PLACEHOLDER CONTENT ------------------------------------------------------
-# Everything below marked TODO is credible-sounding scaffolding, NOT fact.
-# Replace with real numbers, real clients and real engagements before launch.
+# -- CONTENT ------------------------------------------------------------------
+# METRICS and CLIENT_LOGOS are real and confirmed. CASE_STUDIES and TESTIMONIALS
+# below are scaffolding and are NOT published: case studies are switched off by
+# SITE["show_case_studies"], and the testimonials section was removed from the
+# home page. Both are kept so real ones can be dropped in later.
 
-METRICS = [  # TODO: replace with verified figures
+METRICS = [  # Confirmed accurate by RK, 4 Sep 2026.
     ("20<em>+</em>", "Years leading security programs across regulated industries"),
     ("60<em>+</em>", "Audits, assessments and certifications guided to completion"),
     ("9", "Compliance frameworks operated end to end, not just advised on"),
