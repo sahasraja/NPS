@@ -529,6 +529,439 @@ INDUSTRIES = [
 CASE_STUDIES = []
 
 # ============================================================================
+# GUIDES  (framework roadmaps)
+# ============================================================================
+# Facts checked against primary and legal sources on 4 September 2026. The CMMC
+# guide in particular reflects the 13 July 2026 Phase 2 suspension; recheck
+# before making claims about dates.
+
+GUIDES = [
+    {
+        "slug": "soc-2-roadmap",
+        "code": "SOC 2",
+        "title": "The road to a SOC 2 report",
+        "eyebrow": "SOC 2 Type I and Type II",
+        "teaser": "What the year actually looks like, where the time really goes, and the "
+                  "five ways companies turn a four-month project into a fourteen-month one.",
+        "read": "9 min read",
+        "summary": "SOC 2 is an attestation, not a certification. A CPA firm examines whether "
+                   "the controls you described were designed properly and, for a Type II, "
+                   "whether they operated over a period of time. Nobody grants you a "
+                   "certificate. You get a report, and your customers read it.",
+        "who": [
+            "A customer contract or a security review is gating on it, with a date attached",
+            "You sell software or a service that holds someone else's data",
+            "You are between roughly 20 and 500 people and this is your first time",
+            "You have bought a compliance automation platform and the percentage is not moving",
+        ],
+        "callout": ("Type I or Type II?",
+                    "Type I says the controls were designed properly on one date. Type II says "
+                    "they actually operated over a window, usually three to twelve months. "
+                    "Enterprise buyers want Type II. Type I is worth doing only when you need "
+                    "something to show a buyer within weeks and you are committed to the Type II "
+                    "immediately after. Doing Type I as an end in itself buys you a document "
+                    "most procurement teams will not accept."),
+        "phases": [
+            ("Scope the audit", "2 to 4 weeks",
+             "Decide which systems, which trust services criteria and which entity are in scope. "
+             "This single decision drives cost, effort and duration more than anything else "
+             "you will do. Security is mandatory; Availability, Confidentiality, Processing "
+             "Integrity and Privacy are each optional and each adds real work.",
+             "A written scope and boundary, agreed with your executive team, and a defensible "
+             "reason for every system left out."),
+            ("Gap assessment", "2 to 3 weeks",
+             "Compare current practice against the criteria in scope. Split findings three ways: "
+             "audit-blocking, deal-blocking, and neither. Only the first two earn engineering time "
+             "before the audit.",
+             "A ranked remediation plan with owners, effort estimates and a critical path to your "
+             "target report date."),
+            ("Remediate and design controls", "4 to 12 weeks",
+             "Build the controls that are missing and redesign the ones that exist but would not "
+             "survive fieldwork. Design them around how your team already works, or you will be "
+             "fighting them every quarter for years.",
+             "Working controls, a policy set written to be followed, and a named human owner for "
+             "every control who can explain it out loud."),
+            ("Operate through the observation window", "3 to 12 months",
+             "This is the part nobody can compress. For a Type II, the auditor examines evidence "
+             "across a period. Three months is the shortest window most auditors will accept; six "
+             "to twelve is what enterprise buyers prefer to see. The window starts when the "
+             "controls genuinely operate, not when you decide it starts.",
+             "Continuous evidence: access reviews performed, tickets closed, alerts triaged, "
+             "onboarding and offboarding records, change approvals."),
+            ("Auditor fieldwork", "3 to 6 weeks",
+             "The auditor samples evidence, interviews control owners and tests operating "
+             "effectiveness. Your job here is logistics and fast, accurate answers. Engineers "
+             "should be involved only where they are genuinely needed.",
+             "Requested evidence delivered on time, exceptions understood before they are written "
+             "down, and management responses drafted for anything that lands."),
+            ("Report and sustain", "2 to 4 weeks, then annual",
+             "The report issues. Then the real question: will year two be a repeat of year one, "
+             "or a routine? That is decided by whether evidence is produced by working normally "
+             "or by a quarterly scramble.",
+             "The report, a customer-facing trust package, and an annual calendar that keeps the "
+             "next one boring."),
+        ],
+        "time_sinks": [
+            "The observation window. It is calendar time and no amount of money shortens it.",
+            "Access reviews across every in-scope system, done properly rather than as a signature on a CSV export.",
+            "Vendor management, because SOC 2 asks about your subservice organizations and most companies have never listed them.",
+            "The system description, a narrative document that auditors judge and customers read, and that no platform generates for you.",
+            "Waiting for an auditor with capacity, which in Q4 can be six weeks on its own.",
+        ],
+        "artifacts": [
+            ("Scope and boundary document", "What is in, what is out, and the reasoning for both"),
+            ("Policy set", "Written to match reality, not a downloaded template library"),
+            ("Risk assessment", "Documented, dated, and revisited, because the auditor will ask when you last did it"),
+            ("System description", "The narrative at the front of the report describing your service and its controls"),
+            ("Evidence repository", "Organized so an auditor can walk it without a guide"),
+            ("Vendor inventory", "Subservice organizations, what they do, and their own reports"),
+            ("Management assertion", "Your formal statement that the description is fair and controls operated"),
+        ],
+        "failures": [
+            ("Scoping by accident",
+             "Nobody makes a deliberate decision about the boundary, so the whole corporate estate "
+             "ends up in scope. The control surface roughly doubles, the evidence load doubles with "
+             "it, and the customer gets no additional assurance for any of it."),
+            ("Believing the platform is the program",
+             "Vanta, Drata and Secureframe collect evidence continuously and that is genuinely "
+             "useful. None of them can scope an audit, design a control, write the system "
+             "description or argue with an auditor. The dashboard goes green while the program "
+             "underneath is not defensible."),
+            ("Starting the window too early",
+             "The observation period begins and the controls are not really operating yet. Three "
+             "months later the sample comes back with gaps, and the choice is a qualified report "
+             "or restarting the clock."),
+            ("Treating the system description as boilerplate",
+             "It is the part of the report your customers actually read. A vague or inaccurate one "
+             "undermines an otherwise clean opinion, and a customer who spots the gap between the "
+             "description and reality will ask about it."),
+            ("Choosing the auditor on price alone",
+             "The cheapest quote is often a firm that will sample lightly and issue quickly. That "
+             "feels efficient until an enterprise buyer's security team recognizes the name and "
+             "discounts the report."),
+        ],
+        "cost_drivers": [
+            "Number of trust services criteria beyond Security",
+            "Number of in-scope systems and cloud environments",
+            "Length of the observation window",
+            "Whether you have any control ownership internally, or none",
+            "Headcount, because auditors price partly on the size of the population they sample",
+        ],
+        "faqs": [
+            ("How long does it really take, start to finish?",
+             "For a first Type II with a three-month window and controls that mostly do not exist "
+             "yet: six to nine months. With a twelve-month window: twelve to fifteen. A Type I "
+             "alone can be done in three to four months. Anyone promising a Type II in eight weeks "
+             "is either selling a Type I or planning to start the window before the controls work."),
+            ("Do we need a compliance platform?",
+             "Not strictly, but by year two you will want one. Automated evidence collection turns "
+             "the annual repeat from a project into a routine. Buy it for what it does, which is "
+             "the evidence pipeline, and do not expect it to make the judgment calls."),
+            ("What does it cost?",
+             "The audit fee is usually the smaller number. Readiness work, remediation and the "
+             "internal time to operate controls typically exceed it several times over. Be "
+             "suspicious of any proposal that quotes only the audit."),
+            ("Can we reuse this for ISO 27001?",
+             "Substantially, yes. The control sets overlap heavily and the evidence often serves "
+             "both. Carrying two frameworks should not mean maintaining two control sets, and if "
+             "you know both are coming, map once at the start rather than twice."),
+        ],
+    },
+    {
+        "slug": "iso-27001-roadmap",
+        "code": "ISO 27001",
+        "title": "The road to ISO/IEC 27001:2022 certification",
+        "eyebrow": "ISO/IEC 27001:2022",
+        "teaser": "A management system, not a control checklist. What the standard actually "
+                  "requires, why Stage 1 audits fail, and the records auditors ask for that "
+                  "nobody thinks to keep.",
+        "read": "10 min read",
+        "summary": "ISO 27001 certifies a management system. The 93 controls in Annex A get most "
+                   "of the attention, but they are the appendix. Clauses 4 through 10 are the "
+                   "standard, and they are where certification is won or lost.",
+        "who": [
+            "You sell into Europe, the UK, or to enterprises that ask for ISO rather than SOC 2",
+            "You want a certificate rather than an attestation report",
+            "You already hold SOC 2 and want to reuse the work",
+            "You are being asked for ISO by a customer who will not accept anything else",
+        ],
+        "callout": ("The 2013 version is gone",
+                    "The transition window closed on 31 October 2025. Certificates against "
+                    "ISO/IEC 27001:2013 are no longer valid, and every new or renewed certificate "
+                    "is against the 2022 revision: 93 Annex A controls organized into four themes "
+                    "rather than 114 across fourteen domains. If a supplier shows you a 2013 "
+                    "certificate today, it has expired."),
+        "phases": [
+            ("Define scope and context", "3 to 5 weeks",
+             "Clauses 4 and 5. Determine the boundary of the management system, identify "
+             "interested parties and their requirements, and secure genuine leadership "
+             "commitment. A scope statement that is too broad is the most expensive mistake "
+             "available at this stage, and it is nearly impossible to narrow later.",
+             "A written scope statement, context analysis, and an information security policy "
+             "signed by top management."),
+            ("Risk assessment and Statement of Applicability", "4 to 6 weeks",
+             "Clause 6. Establish a repeatable risk methodology, run it, and produce a risk "
+             "treatment plan. The Statement of Applicability then records all 93 Annex A controls "
+             "with a decision and a justification for each, including the ones you exclude.",
+             "A risk register with owners and treatment decisions, and an SoA you can defend "
+             "line by line."),
+            ("Build the management system", "6 to 12 weeks",
+             "Clause 7 and the Annex A controls you have accepted. Policies, procedures, "
+             "competence and awareness, documented information control. This is the bulk of the "
+             "build, and the point where most organizations discover their existing documentation "
+             "does not meet the requirement.",
+             "A working ISMS: policies people follow, defined roles, training records, and "
+             "controlled documents with version history."),
+            ("Operate and generate records", "3 to 6 months",
+             "Clause 8 and 9. The system has to run and produce evidence. Auditors will ask what "
+             "you did, when, and who approved it. Records created retrospectively are visible as "
+             "such and will be treated accordingly.",
+             "Operational records, monitoring results, and measurable objectives with actual "
+             "measurements against them."),
+            ("Internal audit and management review", "3 to 5 weeks",
+             "Clause 9.2 and 9.3. Both are mandatory and both must happen before Stage 2. The "
+             "internal audit must be performed by someone independent of the area being audited, "
+             "which usually means not the person who built the ISMS.",
+             "An internal audit report with findings, corrective actions raised and closed, and "
+             "management review minutes covering every required input."),
+            ("Stage 1 audit", "1 to 2 days, then 4 to 8 weeks",
+             "The certification body reviews your documentation and readiness. Failures here are "
+             "almost always missing management system records rather than missing technical "
+             "controls. You then get a gap to close whatever they found.",
+             "A Stage 1 report and a corrective action plan for anything raised."),
+            ("Stage 2 audit and certification", "3 to 5 days",
+             "The full assessment of implementation and effectiveness. Findings are graded as "
+             "minor or major nonconformities; majors must be closed before the certificate "
+             "issues.",
+             "The certificate, valid three years, with surveillance audits in years one and two "
+             "and recertification in year three."),
+        ],
+        "time_sinks": [
+            "The risk assessment, done properly rather than as a spreadsheet completed in an afternoon.",
+            "The Statement of Applicability, because 93 justifications is genuinely a lot of writing.",
+            "Accumulating operational records, which is calendar time and cannot be compressed.",
+            "Internal audit, which needs a competent and independent person you may not have.",
+            "Certification body scheduling, which can add six to ten weeks if you leave it late.",
+        ],
+        "artifacts": [
+            ("Scope statement", "The boundary of the ISMS, precise enough to appear on the certificate"),
+            ("Information security policy", "Approved by top management, not by IT"),
+            ("Risk assessment methodology and register", "Repeatable, documented, with owners and treatment decisions"),
+            ("Statement of Applicability", "All 93 Annex A controls, each included or excluded with justification"),
+            ("Risk treatment plan", "What you are doing about the risks you did not accept"),
+            ("Objectives and measurements", "Security objectives with actual numbers against them"),
+            ("Internal audit program and reports", "Independent, covering the whole ISMS over the cycle"),
+            ("Management review minutes", "Covering every input the standard lists"),
+            ("Corrective action records", "Findings raised, root cause, action, verification"),
+        ],
+        "failures": [
+            ("Treating Annex A as the standard",
+             "Teams implement 93 controls beautifully and fail Stage 1 because there is no "
+             "management review, no internal audit, and no evidence the risk assessment drove any "
+             "of it. Clauses 4 to 10 are the certifiable part."),
+            ("A scope statement written too wide",
+             "Certifying the whole organization when the customer only cares about one platform "
+             "multiplies the audit, the evidence and the ongoing burden. Narrowing scope after "
+             "certification means a new scope and effectively starting over."),
+            ("Copying someone else's Statement of Applicability",
+             "The SoA has to reflect your risk assessment. An auditor who finds justifications "
+             "that do not match your own risk register has found a systemic problem, not a "
+             "paperwork one."),
+            ("Internal audit performed by the ISMS owner",
+             "Clause 9.2 requires objectivity and impartiality. Auditing your own work is a "
+             "nonconformity in itself, regardless of how well the audit was done."),
+            ("Retrospective records",
+             "A year of management review minutes written the week before Stage 2 is obvious to "
+             "anyone who has audited before. The dates, the language and the absence of any "
+             "disagreement all give it away."),
+        ],
+        "cost_drivers": [
+            "Scope: number of locations, legal entities and systems included",
+            "Headcount, which drives certification body audit days directly",
+            "How much documented management system already exists",
+            "Whether you need an external internal auditor",
+            "Certification body choice, where accreditation matters more than price",
+        ],
+        "faqs": [
+            ("How long from a standing start?",
+             "Six to twelve months for most organizations. Under six is possible only where a "
+             "real management system already exists and only the ISO framing is missing. The "
+             "floor is set by needing enough operational records to audit."),
+            ("Is ISO 27001 harder than SOC 2?",
+             "Different, not harder. SOC 2 asks whether your controls worked. ISO asks whether "
+             "you have a system that decides which controls you need, checks that it is working, "
+             "and improves itself. The documentation burden is heavier; the technical bar is "
+             "often lower."),
+            ("Can one program cover both ISO 27001 and SOC 2?",
+             "Yes, and it should. The control overlap is substantial and most evidence serves "
+             "both. Run the risk assessment and control design once, map to both, and collect "
+             "evidence once. Doing them as separate projects is the expensive way."),
+            ("What is the difference between accredited and unaccredited certification?",
+             "An accredited certificate comes from a body overseen by a national accreditation "
+             "authority. An unaccredited one is a company's opinion. Sophisticated buyers check, "
+             "and the price difference is not worth the risk of being caught with a certificate "
+             "that does not count."),
+            ("What happens after we are certified?",
+             "Surveillance audits in years one and two, recertification in year three, and the "
+             "management system has to keep running throughout. The certificate can be suspended "
+             "if surveillance finds the ISMS has stopped operating."),
+        ],
+    },
+    {
+        "slug": "cmmc-roadmap",
+        "code": "CMMC",
+        "title": "The road to CMMC, and what the Phase 2 suspension changed",
+        "eyebrow": "CMMC Level 1 and Level 2",
+        "teaser": "The certification timeline moved. The obligations did not. What defense "
+                  "contractors actually have to do right now, and why pausing your program "
+                  "would be the expensive reading of the news.",
+        "read": "11 min read",
+        "summary": "CMMC verifies something that has been contractually required since 2017. "
+                   "DFARS 252.204-7012 already obliges contractors handling covered defense "
+                   "information to implement all 110 controls in NIST SP 800-171. CMMC was the "
+                   "mechanism to check. The checking has been paused; the requirement has not.",
+        "who": [
+            "You hold or bid on DoD contracts containing DFARS 252.204-7012",
+            "A prime contractor has flowed CMMC requirements down to you",
+            "You handle Federal Contract Information or Controlled Unclassified Information",
+            "You paused your CMMC program after July 2026 and are wondering whether that was right",
+        ],
+        "callout_alert": ("Phase 2 was suspended on 13 July 2026",
+                          "The Department of War suspended CMMC Phase 2 effective immediately, "
+                          "halting the 10 November 2026 move to third-party C3PAO assessments, "
+                          "and opened a review of the program. What did not change: DFARS "
+                          "252.204-7012, all 110 NIST SP 800-171 controls, annual affirmations, "
+                          "SPRS scoring, incident reporting, and flow-down to subcontractors. "
+                          "Level 1 and Level 2 self-assessment obligations remain in force. "
+                          "Contractors who stop work now will face the same requirements later "
+                          "with less time, and misrepresenting a SPRS score carries False Claims "
+                          "Act exposure whether or not anyone is coming to assess it."),
+        "phases": [
+            ("Determine what you actually hold", "2 to 4 weeks",
+             "Federal Contract Information and Controlled Unclassified Information are different "
+             "things with different obligations. FCI means Level 1 and 15 basic safeguarding "
+             "requirements from FAR 52.204-21. CUI means Level 2 and all 110 controls. Read your "
+             "contracts rather than assuming.",
+             "A contract-by-contract determination of FCI and CUI, with the clauses that "
+             "triggered each."),
+            ("Map where CUI lives and moves", "3 to 6 weeks",
+             "Follow it: email, file shares, engineering workstations, the ERP, the contract "
+             "manager's laptop, the shop floor. This is the single highest-leverage activity in "
+             "the whole program, because every system CUI touches falls in scope.",
+             "A data flow map and an honest inventory of every system, person and process that "
+             "handles CUI."),
+            ("Design the boundary", "4 to 8 weeks",
+             "Decide whether to bring the whole company into scope or build an enclave that CUI "
+             "lives inside. For most small and mid-sized suppliers the enclave is dramatically "
+             "cheaper, and the decision to build one is usually worth more than the entire rest "
+             "of the engagement.",
+             "A defensible system boundary, an architecture for the enclave, and a documented "
+             "shared responsibility split with any cloud or managed provider."),
+            ("Implement the 110 controls", "3 to 9 months",
+             "NIST SP 800-171 across access control, audit, configuration, identification and "
+             "authentication, incident response, maintenance, media protection, personnel, "
+             "physical, risk, security assessment, communications and system integrity. Some are "
+             "technical, many are procedural, and the procedural ones are the ones that get "
+             "skipped.",
+             "Implemented controls with evidence, and honest scoring rather than optimistic "
+             "scoring."),
+            ("SSP, POA&M and SPRS", "3 to 5 weeks, then continuous",
+             "The System Security Plan documents how each control is met. The POA&M covers what "
+             "is not yet met, with dates. The score goes into the Supplier Performance Risk "
+             "System. Note that not every control can sit on a POA&M, and the ones that cannot "
+             "are the ones assessors look at first.",
+             "A current SSP, a POA&M with real dates, and a SPRS score you can defend line by "
+             "line to someone hostile."),
+            ("Self-assess and affirm", "2 to 3 weeks, then annual",
+             "Phase 1 requirements are active: self-assessment and an annual affirmation from a "
+             "senior official. Level 2 self-assessments continue every three years with annual "
+             "affirmation. The affirmation is a signed statement, and that signature is what "
+             "creates personal exposure if the score is wrong.",
+             "A completed assessment, a submitted affirmation, and the evidence to support both."),
+            ("Prepare for third-party assessment", "When Phase 2 resumes",
+             "C3PAO assessment is paused, not cancelled. Organizations that keep their evidence "
+             "current will need a mock assessment and a short readiness pass. Organizations that "
+             "stopped will be starting the implementation again against a shorter runway.",
+             "A mock assessment against the same criteria a C3PAO would use, and gaps closed "
+             "before anyone external looks."),
+        ],
+        "time_sinks": [
+            "Finding CUI, which is always in more places than anyone expects, particularly email and personal drives.",
+            "The procedural controls, which need written procedures and evidence people follow them, not just technology.",
+            "Segmenting operational technology without stopping production, where change windows are measured in shifts.",
+            "Getting a straight answer from an MSP about which controls they cover and which are yours.",
+            "Documenting the SSP properly, which is a substantial writing exercise and cannot be delegated to a tool.",
+        ],
+        "artifacts": [
+            ("CUI and FCI determination", "Which contracts, which clauses, which data"),
+            ("Data flow map", "Where CUI enters, lives, moves and leaves"),
+            ("System Security Plan", "How each of the 110 controls is met, in your environment"),
+            ("POA&M", "What is not met, who owns it, when it closes"),
+            ("SPRS score and submission", "Calculated honestly, with the working shown"),
+            ("Annual affirmation", "Signed by a senior official who understands what they signed"),
+            ("Shared responsibility matrix", "What your cloud and managed providers cover, in writing"),
+            ("Incident response plan", "With the 72-hour DFARS reporting obligation built in"),
+        ],
+        "failures": [
+            ("Never defining the boundary",
+             "Without a deliberate CUI enclave, the entire company falls in scope: every laptop, "
+             "every server, every user. The cost difference between a scoped enclave and a "
+             "whole-company implementation is routinely five to one."),
+            ("Assuming your cloud provider covers you",
+             "A FedRAMP authorized service is a component of your compliance, not a substitute "
+             "for it. The controls that remain yours are numerous, and the shared responsibility "
+             "split needs to be documented rather than assumed."),
+            ("Using the POA&M as a parking lot",
+             "Not every control is eligible to be deferred, and a POA&M loaded with the ones that "
+             "are not is the fastest way to fail. Dates that have already slipped once are read "
+             "as an indicator of everything else."),
+            ("An inflated SPRS score",
+             "Scoring generously feels harmless while nobody is checking. The affirmation is a "
+             "signed representation to the government, and False Claims Act cases have already "
+             "been brought on exactly this. The suspension of assessments does not suspend that "
+             "exposure."),
+            ("Treating the July 2026 suspension as a stand-down",
+             "The obligations survived intact. The organizations that keep going will be ready "
+             "when Phase 2 resumes and can say so to primes in the meantime, which is itself "
+             "becoming a discriminator in flow-down decisions."),
+        ],
+        "cost_drivers": [
+            "Whether you scope an enclave or bring the whole company in",
+            "How much CUI has spread into email and unmanaged endpoints",
+            "Whether operational technology touches the same network",
+            "Existing maturity against NIST SP 800-171, which is usually lower than assumed",
+            "Level 1 versus Level 2, which is 15 requirements versus 110",
+        ],
+        "faqs": [
+            ("Should we pause our CMMC program after the suspension?",
+             "No. Third-party assessment is paused; nothing else is. DFARS 252.204-7012, the 110 "
+             "controls, self-assessment, annual affirmation, SPRS scoring, incident reporting and "
+             "subcontractor flow-down all remain in force. Pausing means facing the same "
+             "requirements later with a shorter runway, while carrying the same legal exposure in "
+             "the meantime."),
+            ("What is the difference between Level 1 and Level 2?",
+             "Level 1 applies to Federal Contract Information and requires the 15 basic "
+             "safeguarding requirements in FAR 52.204-21, self-assessed annually. Level 2 applies "
+             "to Controlled Unclassified Information and requires all 110 NIST SP 800-171 "
+             "controls. The gap between them is very large."),
+            ("How long does Level 2 take?",
+             "Nine to eighteen months for most suppliers starting from a typical commercial IT "
+             "baseline. Scoping an enclave shortens it considerably. The implementation of "
+             "procedural controls, not the technical ones, is usually the long pole."),
+            ("Can our MSP just handle this?",
+             "Partly. An MSP can implement and operate many technical controls, but the "
+             "obligation stays with you, the SSP is yours to defend, and the affirmation is "
+             "signed by your senior official. Get the shared responsibility split in writing "
+             "before you rely on it."),
+            ("What happens when Phase 2 resumes?",
+             "Third-party C3PAO assessment returns for the contracts that require it. The "
+             "practical difference between organizations at that point will be whether they have "
+             "current evidence or a two-year gap in their records."),
+        ],
+    },
+]
+
+# ============================================================================
 # INSIGHTS
 # ============================================================================
 
@@ -759,6 +1192,7 @@ def header_html(active):
         <div class="menu">{nav_menu()}</div>
       </div>
       <a class="nav-link{cls('industries')}" href="/industries.html">Industries</a>
+      <a class="nav-link{cls('guides')}" href="/guides.html">Guides</a>
 {cases_nav}      <a class="nav-link{cls('insights')}" href="/insights.html">Insights</a>
       <a class="nav-link{cls('about')}" href="/about.html">About</a>
       <a class="btn btn-primary btn-sm header-cta" data-cta="header" href="{SITE['booking_url']}" rel="noopener">Book a call</a>
@@ -798,6 +1232,7 @@ def footer_html():
         <ul>
           <li><a href="/about.html">About</a></li>
           <li><a href="/industries.html">Industries</a></li>
+          <li><a href="/guides.html">Guides</a></li>
 {cases_foot}          <li><a href="/insights.html">Insights</a></li>
           <li><a href="/contact.html">Contact</a></li>
         </ul>
@@ -1657,6 +2092,203 @@ def build_insights():
              html.escape(a["teaser"])[:300], body, active="insights", schema=schema)
 
 
+def build_guides():
+    cards = "".join(
+        f"""<a class="card card--edge guide-card" href="/guides/{g['slug']}.html">
+          <div class="card-num">{g['code']}</div>
+          <h3>{g['title']}</h3>
+          <p>{g['teaser']}</p>
+          <div class="card-foot">
+            <div class="guide-meta">{len(g['phases'])} phases <span>&middot;</span> {g['read']}</div>
+            <span class="link-arrow" style="margin-top:14px">Read the roadmap {icon('arrow')}</span>
+          </div>
+        </a>""" for g in GUIDES
+    )
+    body = f"""
+{page_hero([("Home", "/"), ("Guides", None)], "Guides",
+           "How these programs actually run.",
+           "Framework roadmaps written from having run them: the real phases, the durations "
+           "nobody quotes you, the artifacts you have to produce, and the specific ways these "
+           "programs go wrong. No gate, no email required.")}
+
+<section class="section">
+  <div class="wrap">
+    <div class="grid grid-3">{cards}</div>
+  </div>
+</section>
+
+<section class="section section--panel">
+  <div class="wrap wrap-narrow center">
+    <span class="eyebrow">Why we publish these</span>
+    <h2>Because the hard part is never the control list.</h2>
+    <p class="lede">Every framework publishes its requirements. What nobody publishes is how long
+    each phase really takes, which decisions cost the most, and what an assessor looks at first.
+    That is the part we have learned by doing it, and it is more useful to you in the open than
+    behind a form.</p>
+  </div>
+</section>
+
+{cta_band(head="Working to one of these deadlines?",
+          body="Tell us the framework, the date and what you have already done. We will tell you "
+               "whether the date is realistic and what we would do first.",
+          secondary=("Compliance services", "/services/compliance.html"))}
+"""
+    page("guides.html", "Compliance Roadmaps: SOC 2, ISO 27001, CMMC | NPS",
+         "Practitioner roadmaps for SOC 2, ISO/IEC 27001:2022 and CMMC. Real phases, real "
+         "durations, required artifacts, and how these programs fail.",
+         body, active="guides")
+
+    for g in GUIDES:
+        who = "".join("<li>%s<span>%s</span></li>" % (icon("check"), w) for w in g["who"])
+
+        call = ""
+        if g.get("callout"):
+            t, d = g["callout"]
+            call = ('<div class="callout">%s<div><b>%s</b><p>%s</p></div></div>'
+                    % ('<span class="ico">%s</span>' % icon("compass"), t, d))
+        if g.get("callout_alert"):
+            t, d = g["callout_alert"]
+            call = ('<div class="callout callout--alert">%s<div><b>%s</b><p>%s</p></div></div>'
+                    % ('<span class="ico">%s</span>' % icon("radar"), t, d))
+
+        phases = "".join(
+            f"""<div class="phase">
+              <div class="phase-head"><h3>{name}</h3><span class="phase-dur">{dur}</span></div>
+              <p>{what}</p>
+              <div class="out"><b>You come out with:</b> {out}</div>
+            </div>""" for name, dur, what, out in g["phases"]
+        )
+        sinks = "".join("<li>%s<span>%s</span></li>" % (icon("clock"), x) for x in g["time_sinks"])
+        arts = "".join("<tr><td>%s</td><td>%s</td></tr>" % (n, d) for n, d in g["artifacts"])
+        fails = "".join(
+            '<div class="fail"><h3>%s</h3><p>%s</p></div>' % (h, b) for h, b in g["failures"]
+        )
+        costs = "".join("<li>%s<span>%s</span></li>" % (icon("chart"), c) for c in g["cost_drivers"])
+        others = [x for x in GUIDES if x["slug"] != g["slug"]]
+        more = "".join(
+            f"""<a class="card card--edge" href="/guides/{o['slug']}.html">
+              <div class="card-num">{o['code']}</div><h3>{o['title']}</h3>
+              <p>{o['teaser']}</p></a>""" for o in others
+        )
+
+        body = f"""
+{page_hero([("Home", "/"), ("Guides", "/guides.html"), (g['code'], None)],
+           g['eyebrow'], g['title'], g['teaser'])}
+
+<section class="section">
+  <div class="wrap">
+    <div class="split" style="align-items:start">
+      <div class="prose">
+        {call}
+        <p class="lede">{g['summary']}</p>
+      </div>
+      <div class="card" style="padding:28px">
+        <div class="card-ico">{icon('clipboard')}</div>
+        <h3>Read this if</h3>
+        {checks(g['who'])}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The roadmap</span>
+      <h2>What the program actually looks like.</h2>
+      <p>Durations assume a first attempt with a team that has other work to do. They are the
+      numbers we would give you on a call, not the ones in a sales deck.</p>
+    </div>
+    <div class="wrap-narrow" style="padding:0">
+      <div class="roadmap">{phases}</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="split" style="align-items:start">
+      <div>
+        <span class="eyebrow">Where the time goes</span>
+        <h2>The five things that consume the calendar.</h2>
+        <p class="lede" style="margin-bottom:26px">None of these are the parts people budget for,
+        and all of them are the parts that slip.</p>
+        <ul class="checks">{sinks}</ul>
+      </div>
+      <div>
+        <span class="eyebrow">Cost drivers</span>
+        <h2>What moves the number.</h2>
+        <p class="lede" style="margin-bottom:26px">Two organizations of the same size can differ
+        several-fold on price. This is usually why.</p>
+        <ul class="checks">{costs}</ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--panel">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Deliverables</span>
+      <h2>What you have to produce.</h2>
+      <p>Every one of these will be asked for. Missing any of them is a finding.</p>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th style="width:34%">Artifact</th><th>What it has to contain</th></tr></thead>
+        <tbody>{arts}</tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How it goes wrong</span>
+      <h2>Five failures we see repeatedly.</h2>
+      <p>Each of these turns a manageable program into an expensive one. All five are avoidable
+      at the start and very hard to fix in the middle.</p>
+    </div>
+    <div class="fails">{fails}</div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="wrap wrap-narrow">
+    <div class="section-head center">
+      <span class="eyebrow">Questions</span>
+      <h2>What people ask us about {g['code']}.</h2>
+    </div>
+    {faq_block(g['faqs'])}
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Other roadmaps</span><h2>Keep reading</h2></div>
+    <div class="grid grid-2">{more}</div>
+  </div>
+</section>
+
+{cta_band(head="Want this run for you?",
+          body="We run these programs end to end: scoping, control design, evidence, auditor "
+               "management, and the operating rhythm that keeps year two boring.",
+          secondary=("Compliance services", "/services/compliance.html"))}
+"""
+        schema = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": g["title"],
+            "description": g["teaser"],
+            "author": {"@type": "Organization", "name": "NPS"},
+            "publisher": {"@type": "Organization", "name": "NPS"},
+        }
+        page("guides/%s.html" % g["slug"],
+             "%s | NPS" % html.escape(g["title"]),
+             html.escape(g["teaser"])[:300], body, active="guides", schema=schema)
+
+
 def build_about():
     values = [
         ("Clarity over jargon", "If a smart non-specialist cannot follow the argument, we have not "
@@ -1984,13 +2616,14 @@ def build_legal():
 
 
 def build_seo_assets():
-    urls = ["/", "/services.html", "/industries.html", "/insights.html",
+    urls = ["/", "/services.html", "/industries.html", "/guides.html", "/insights.html",
             "/about.html", "/contact.html", "/privacy.html", "/terms.html"]
     if SITE.get("show_case_studies"):
         urls.insert(3, "/case-studies.html")
     urls += ["/services/%s.html" % s["slug"] for s in SERVICES]
     if SITE.get("show_case_studies"):
         urls += ["/case-studies/%s.html" % c["slug"] for c in CASE_STUDIES]
+    urls += ["/guides/%s.html" % g["slug"] for g in GUIDES]
     urls += ["/insights/%s.html" % a["slug"] for a in INSIGHTS]
 
     entries = "\n".join(
@@ -2019,7 +2652,7 @@ def build_seo_assets():
 
 
 def main():
-    for d in ("services", "case-studies", "insights"):
+    for d in ("services", "case-studies", "insights", "guides"):
         p = os.path.join(ROOT, d)
         if os.path.isdir(p):
             shutil.rmtree(p)
@@ -2033,6 +2666,7 @@ def main():
     build_services_index()
     build_service_pages()
     build_industries()
+    build_guides()
     build_case_studies()
     build_insights()
     build_about()

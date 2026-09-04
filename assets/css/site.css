@@ -1180,3 +1180,89 @@ td:first-child { color: var(--text); font-weight: 500; }
 .consent-actions { display: flex; gap: 10px; }
 @keyframes consentIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @media (max-width: 520px) { .consent { left: 12px; right: 12px; bottom: 12px; width: auto; } }
+
+/* ==========================================================================
+   Guides: phased roadmap, status callout, failure cards
+   ========================================================================== */
+.callout {
+  display: flex;
+  gap: 16px;
+  padding: 22px 24px;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius);
+  background: linear-gradient(150deg, var(--accent-dim), var(--surface) 60%);
+  margin-bottom: 40px;
+}
+.callout .ico { flex: none; width: 34px; height: 34px; display: grid; place-items: center;
+  border-radius: 9px; background: var(--accent-dim); border: 1px solid var(--accent-line); color: var(--accent); }
+.callout .ico svg { width: 17px; height: 17px; }
+.callout b { display: block; font-family: var(--font-head); font-size: 0.98rem; color: #fff; margin-bottom: 6px; }
+.callout p { font-size: 0.92rem; color: var(--text-2); margin: 0; }
+.callout--alert { border-color: var(--alert-line); background: linear-gradient(150deg, var(--alert-dim), var(--surface) 60%); }
+.callout--alert .ico { background: var(--alert-dim); border-color: var(--alert-line); color: var(--alert); }
+
+/* Phase roadmap */
+.roadmap { position: relative; padding-left: 34px; }
+.roadmap::before {
+  content: "";
+  position: absolute;
+  left: 8px; top: 10px; bottom: 10px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2) 55%, transparent);
+  opacity: .5;
+}
+.phase { position: relative; padding-bottom: 34px; }
+.phase:last-child { padding-bottom: 0; }
+.phase::before {
+  content: "";
+  position: absolute;
+  left: -34px; top: 6px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-dim);
+}
+.phase-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; margin-bottom: 10px; }
+.phase-head h3 { margin: 0; font-size: 1.12rem; }
+.phase-dur {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-line);
+  background: var(--accent-dim);
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.phase p { font-size: 0.94rem; color: var(--text-2); margin-bottom: 12px; }
+.phase .out {
+  font-size: 0.86rem;
+  color: var(--text-3);
+  border-left: 2px solid var(--line-strong);
+  padding-left: 14px;
+}
+.phase .out b { color: var(--text-2); font-weight: 600; }
+
+/* Failure cards */
+.fails { display: grid; gap: 16px; }
+.fail {
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--alert);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  padding: 22px 24px;
+}
+.fail h3 { font-size: 1.03rem; margin-bottom: 8px; }
+.fail p { font-size: 0.92rem; color: var(--text-2); margin: 0; }
+
+/* Guide index cards */
+.guide-card .card-num { color: var(--accent); }
+.guide-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 16px;
+  font-family: var(--font-mono); font-size: 0.7rem;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3);
+  margin-top: 14px;
+}

@@ -3,6 +3,7 @@
   <url><loc>https://nilaproservices.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://nilaproservices.com/services.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/industries.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nilaproservices.com/guides.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/insights.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -16,6 +17,9 @@
   <url><loc>https://nilaproservices.com/services/ai-governance.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/services/security-operations.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/services/third-party-risk.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nilaproservices.com/guides/soc-2-roadmap.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nilaproservices.com/guides/iso-27001-roadmap.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nilaproservices.com/guides/cmmc-roadmap.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/insights/compliance-automation-is-not-a-program.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/insights/ai-governance-that-does-not-block-shipping.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nilaproservices.com/insights/questions-a-board-should-ask.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
