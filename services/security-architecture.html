@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Security Architecture & Engineering | NPS</title>
 <meta name="description" content="Architecture reviews and hands-on engineering across identity-cloud and network - with reference designs your team can actually implement and a Zero Trust path that doesn&#x27;t require replacing everything at once.">
-<meta name="robots" content="noindex,nofollow">
-<!-- PREVIEW MODE: set SITE["preview_mode"] = False before launch -->
+<meta name="robots" content="index,follow">
 <link rel="canonical" href="https://nilaproservices.com/services/security-architecture.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NPS Security Advisory">
@@ -36,7 +35,7 @@
     }
   } catch (e) {}
   var npsHost = location.hostname;
-  var npsBlocked = ["localhost", "127.0.0.1", ""].some(function (h) {
+  var npsBlocked = ["localhost", "127.0.0.1", "", "sahasraja.github.io"].some(function (h) {
     return h === npsHost || (h && npsHost.slice(-h.length) === h);
   });
   gtag('js', new Date());

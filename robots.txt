@@ -1,4 +1,4 @@
-# PREVIEW MODE, site is not ready to be indexed.
-# Set SITE["preview_mode"] = False in build.py before launch.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://nilaproservices.com/sitemap.xml

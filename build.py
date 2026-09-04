@@ -49,7 +49,7 @@ SITE = {
     # and a blanket Disallow in robots.txt, so search engines never index the
     # fabricated case studies. Set to False on the day you launch, and rerun
     # `python3 build.py`.
-    "preview_mode": True,
+    "preview_mode": False,
 
     # Case studies are written but hidden. The content stays in CASE_STUDIES
     # below; flip this to True to bring back the nav link, the footer link,
@@ -66,7 +66,7 @@ SITE = {
     # already. Once the site is live on nilaproservices.com, add
     # "sahasraja.github.io" here so staging traffic stops mixing into the
     # real numbers. Matching is on the end of the hostname.
-    "analytics_exclude_hosts": ["localhost", "127.0.0.1", ""],
+    "analytics_exclude_hosts": ["localhost", "127.0.0.1", "", "sahasraja.github.io"],
 }
 
 # -- PLACEHOLDER CONTENT ------------------------------------------------------

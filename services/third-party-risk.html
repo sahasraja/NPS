@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Third-Party & M&A Security Due Diligence | NPS</title>
 <meta name="description" content="This is the security half of diligence-not the financial-tax or commercial half. A vendor security program that scales past a spreadsheet-and cyber due diligence on acquisitions-so you find out what you are buying before the wire clears rather than after integration.">
-<meta name="robots" content="noindex,nofollow">
-<!-- PREVIEW MODE: set SITE["preview_mode"] = False before launch -->
+<meta name="robots" content="index,follow">
 <link rel="canonical" href="https://nilaproservices.com/services/third-party-risk.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NPS Security Advisory">
@@ -36,7 +35,7 @@
     }
   } catch (e) {}
   var npsHost = location.hostname;
-  var npsBlocked = ["localhost", "127.0.0.1", ""].some(function (h) {
+  var npsBlocked = ["localhost", "127.0.0.1", "", "sahasraja.github.io"].some(function (h) {
     return h === npsHost || (h && npsHost.slice(-h.length) === h);
   });
   gtag('js', new Date());
