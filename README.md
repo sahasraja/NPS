@@ -89,20 +89,15 @@ Both give you a form handler, better analytics and instant rollbacks:
 - Build command: `python3 build.py` (or leave blank, the HTML is committed)
 - Output directory: `/` (repo root)
 
-## Before launch, required
+## Editing content
 
-See **`CONTENT-TODO.md`**. Short version: every number, testimonial, client
-name and case study currently on the site is placeholder scaffolding written
-to demonstrate the structure. Replace them.
+All copy lives in `build.py`. Change it there and run `python3 build.py` to
+regenerate every page. Design changes go in `assets/css/site.css`, which is not
+generated.
 
-Also wire up:
-
-1. **Contact form**, set `SITE["form_action"]` in `build.py` to a Formspree,
-   Basin or Netlify Forms endpoint. Until then the form shows a fallback
-   message with the phone number instead of silently failing.
-2. **Booking link**, set `SITE["booking_url"]` to your Calendly / Reclaim /
-   Cal.com URL. Currently points at `/contact.html`.
-3. **LinkedIn URL**, confirm `SITE["linkedin"]`.
+Configuration lives in the `SITE` dict at the top of `build.py`: the booking URL,
+the contact form endpoint, the GA4 measurement ID, and feature flags for case
+studies and search-engine indexing.
 
 ## Notes
 

@@ -70,10 +70,7 @@ SITE = {
 }
 
 # -- CONTENT ------------------------------------------------------------------
-# METRICS and CLIENT_LOGOS are real and confirmed. CASE_STUDIES and TESTIMONIALS
-# below are scaffolding and are NOT published: case studies are switched off by
-# SITE["show_case_studies"], and the testimonials section was removed from the
-# home page. Both are kept so real ones can be dropped in later.
+# Everything below is real and confirmed.
 
 METRICS = [  # Confirmed accurate by RK, 4 Sep 2026.
     ("20<em>+</em>", "Years leading security programs across regulated industries"),
@@ -85,27 +82,9 @@ METRICS = [  # Confirmed accurate by RK, 4 Sep 2026.
 CLIENT_LOGOS = ["Revalgo.AI", "Engaiz", "Morphis Inc", "Excelencia",
                 "Katpro", "99yards", "Cloudcreek", "1Trooper"]  # TODO: confirm permission to name each
 
-# NOT PUBLISHED. The testimonials section was removed from the home page because
-# these quotes are invented. Collect two or three real ones (anonymized is fine:
-# "Director of IT, regional manufacturer"), replace these, and restore the
-# section in build_home().
-TESTIMONIALS = [
-    (
-        "They walked in during our worst week and made the next twelve months legible. "
-        "No theater, no forty-slide deck, a ranked list of what actually mattered and who owned it.",
-        "VP of Engineering", "Healthcare SaaS platform",
-    ),
-    (
-        "We had failed a customer security review twice. NPS rebuilt the evidence story, "
-        "fixed the control gaps that were real, and we closed the deal the following quarter.",
-        "Chief Revenue Officer", "B2B software company",
-    ),
-    (
-        "The difference is that they've actually run the program, not just audited one. "
-        "Our team stopped dreading security reviews and started running them.",
-        "Director of IT", "Regional manufacturer",
-    ),
-]
+# None yet. Real quotes only, in writing, before anything goes here. Anonymized
+# attribution ("Director of IT, regional manufacturer") is fine; invented is not.
+TESTIMONIALS = []
 
 # ============================================================================
 # ICONS  (inline SVG, stroke-based, 24x24 viewbox)
@@ -543,102 +522,14 @@ INDUSTRIES = [
 ]
 
 # ============================================================================
-# CASE STUDIES  (TODO: replace with real engagements, with client approval)
+# CASE STUDIES
 # ============================================================================
+# None yet. When real engagements are approved for publication, add them here as
+# dicts with: slug, tag, title, teaser, facts, challenge, approach, outcome, quote
+# (see the archived shape in the project notes), then set
+# SITE["show_case_studies"] = True.
 
-CASE_STUDIES = [
-    {
-        "slug": "saas-soc2-enterprise-deals",
-        "tag": "Technology &amp; SaaS",
-        "title": "SOC 2 Type II in five months, and the deal desk stopped losing quarters",
-        "teaser": "A Series B SaaS platform was losing enterprise deals at the security review stage. "
-                  "We ran the certification and rebuilt the buyer trust story around it.",
-        "facts": [("Sector", "B2B SaaS"), ("Size", "~180 employees"), ("Engagement", "5 months"),
-                  ("Scope", "SOC 2 Type II, AppSec, trust package")],
-        "challenge": "Two enterprise deals had stalled in security review and a third was at risk. "
-                     "The company had bought a compliance automation platform nine months earlier "
-                     "and assumed it would produce a report. It had produced a dashboard. Nobody "
-                     "owned scope, control design or evidence, and the engineering team treated "
-                     "every security request as an interruption.",
-        "approach": [
-            "Scoped the audit to the production platform and the systems that genuinely touch customer data, cutting the control surface roughly in half.",
-            "Ran a gap analysis and split findings into audit-blocking, deal-blocking and neither. Only the first two got engineering time.",
-            "Designed controls around the team's existing workflow so evidence was produced by working normally rather than by a quarterly scramble.",
-            "Operated the compliance platform properly (integrations, owners, automated evidence) instead of leaving it as a scoreboard.",
-            "Selected and managed the auditor, ran fieldwork, and kept engineers out of the audit except where they were genuinely needed.",
-            "Built the trust package: architecture narrative, data flow, standard questionnaire answers and a public trust page.",
-        ],
-        "outcome": [
-            "Clean SOC 2 Type II report with no exceptions, on the customer-committed date.",
-            "Security review time in the sales cycle dropped from weeks to days.",
-            "Two stalled enterprise deals closed the quarter after the report issued.",
-            "Year-two surveillance ran on the internal team with advisory support only.",
-        ],
-        "quote": ("We stopped treating compliance as a project that interrupts the roadmap and "
-                  "started treating it as part of how we ship. That was the actual deliverable.",
-                  "VP of Engineering"),
-    },
-    {
-        "slug": "manufacturer-cmmc-level-2",
-        "tag": "Manufacturing &amp; Defense",
-        "title": "CMMC Level 2 readiness without rebuilding the whole network",
-        "teaser": "A defense supplier faced flow-down requirements from a prime and a plant network "
-                  "that had grown organically for two decades.",
-        "facts": [("Sector", "Precision manufacturing"), ("Size", "~400 employees"),
-                  ("Engagement", "8 months"), ("Scope", "CMMC L2, CUI enclave, IT/OT segmentation")],
-        "challenge": "A prime contractor set a hard date for CMMC Level 2 evidence. The supplier's "
-                     "CUI was scattered across file shares, email and three engineering workstations, "
-                     "and the plant network had no meaningful boundary between production machinery "
-                     "and the corporate estate. The initial internal estimate was a full network rebuild.",
-        "approach": [
-            "Mapped where CUI actually lived and moved, the answer was narrower than feared, and that narrowed the assessment boundary dramatically.",
-            "Designed a purpose-built CUI enclave rather than dragging the entire company into scope.",
-            "Segmented the OT network at the boundary that mattered, with change windows planned around production, not against it.",
-            "Implemented the 110 NIST SP 800-171 controls against the enclave, with a documented, defensible System Security Plan and POA&amp;M.",
-            "Ran the evidence program so that every control had an owner, an artefact and a review date.",
-            "Coached the internal IT lead into the ongoing program owner and ran a mock assessment before the real one.",
-        ],
-        "outcome": [
-            "Assessment-ready SSP and evidence set with a scope roughly one-fifth of the original estimate.",
-            "Zero unplanned production downtime during segmentation work.",
-            "Prime contract requirement met ahead of the flow-down deadline.",
-            "Program handed to an internal owner with a documented annual calendar.",
-        ],
-        "quote": ("The first useful thing they did was tell us what we did not have to do. "
-                  "That decision saved more than the entire engagement cost.",
-                  "Director of Information Technology"),
-    },
-    {
-        "slug": "health-system-incident-readiness",
-        "tag": "Healthcare",
-        "title": "From a PDF plan to a response the executive team has actually rehearsed",
-        "teaser": "A regional health system had an incident response plan nobody had read and a "
-                  "third-party dependency map nobody had drawn.",
-        "facts": [("Sector", "Healthcare provider"), ("Size", "Multi-site, ~2,000 staff"),
-                  ("Engagement", "4 months"), ("Scope", "IR readiness, TPRM, detection coverage")],
-        "challenge": "A peer organization in the region had been down for eleven days after a "
-                     "ransomware event. The board asked a direct question. Could that happen "
-                     "to us, and what would we do? The honest answer was that nobody knew. "
-                     "The IR plan predated the current EHR platform.",
-        "approach": [
-            "Rewrote the incident response plan around decision authority: who can disconnect what, who can call it, who talks to whom.",
-            "Built playbooks for the scenarios that were actually plausible: ransomware, business email compromise, and a critical third-party outage.",
-            "Mapped detection coverage against MITRE ATT&amp;CK and closed the gaps that would have mattered in the peer incident.",
-            "Held separate tabletop exercises: one technical, one executive, with the clinical leadership in the room for the second.",
-            "Assessed the top third parties by clinical and data dependency, and wrote the requirements into renewal terms.",
-            "Aligned recovery objectives with what the clinical operation could actually tolerate, then tested against them.",
-        ],
-        "outcome": [
-            "Executive team rehearsed a ransomware decision sequence before ever needing it.",
-            "Detection gaps on the peer incident's initial access path closed within the engagement.",
-            "Third-party requirements written into contract renewals as standard.",
-            "Board received a direct, evidenced answer to the question it asked.",
-        ],
-        "quote": ("The tabletop was uncomfortable, which is exactly what we needed. "
-                  "We found out where we disagreed while it was still theoretical.",
-                  "Chief Operating Officer"),
-    },
-]
+CASE_STUDIES = []
 
 # ============================================================================
 # INSIGHTS
