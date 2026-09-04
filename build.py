@@ -40,15 +40,12 @@ SITE = {
     # The contact form posts to FormSubmit, which relays the message to the
     # address below. No account, no server. The FIRST submission triggers a
     # confirmation email to info@ that must be clicked once to activate the
-    # endpoint; after that it just works. See CONTENT-TODO.md for the note on
-    # moving to a self-hosted or first-party handler later.
+    # endpoint; after that it just works.
     "form_action": "https://formsubmit.co/info@nilaproservices.com",
 
-    # PREVIEW MODE, while the site still contains placeholder content, keep this
-    # True. It adds <meta name="robots" content="noindex,nofollow"> to every page
-    # and a blanket Disallow in robots.txt, so search engines never index the
-    # fabricated case studies. Set to False on the day you launch, and rerun
-    # `python3 build.py`.
+    # PREVIEW MODE. True adds <meta name="robots" content="noindex,nofollow"> to
+    # every page and a blanket Disallow in robots.txt, which is useful while
+    # drafting. False is the live setting.
     "preview_mode": False,
 
     # Case studies are written but hidden. The content stays in CASE_STUDIES
@@ -82,8 +79,8 @@ METRICS = [  # Confirmed accurate by RK, 4 Sep 2026.
 CLIENT_LOGOS = ["Revalgo.AI", "Engaiz", "Morphis Inc", "Excelencia",
                 "Katpro", "99yards", "Cloudcreek", "1Trooper"]  # TODO: confirm permission to name each
 
-# None yet. Real quotes only, in writing, before anything goes here. Anonymized
-# attribution ("Director of IT, regional manufacturer") is fine; invented is not.
+# None yet. Real quotes only, in writing, with approved attribution. Anonymized
+# attribution such as "Director of IT, regional manufacturer" is fine.
 TESTIMONIALS = []
 
 # ============================================================================
