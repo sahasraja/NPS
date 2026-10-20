@@ -2407,7 +2407,7 @@ def build_contact():
         <form class="form" data-contact method="POST" action="{SITE['form_action']}">
           <input type="hidden" name="_subject" value="Website enquiry via nilaproservices.com">
           <input type="hidden" name="_template" value="table">
-          <!--<input type="hidden" name="_captcha" value="false">-->
+          <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="{SITE['domain']}/thank-you.html">
           <input type="text" name="_honey" tabindex="-1" autocomplete="off"
                  aria-hidden="true" class="visually-hidden">
